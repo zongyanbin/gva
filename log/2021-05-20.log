@@ -1,0 +1,29 @@
+[GIN-VUE-ADMIN]2021/05/20 - 14:37:47.904	[34minfo[0m	D:/gin-vue-admin/server/initialize/router.go:21	use middleware logger
+[GIN-VUE-ADMIN]2021/05/20 - 14:37:47.906	[34minfo[0m	D:/gin-vue-admin/server/initialize/router.go:24	use middleware cors
+[GIN-VUE-ADMIN]2021/05/20 - 14:37:47.906	[34minfo[0m	D:/gin-vue-admin/server/initialize/router.go:26	register swagger handler
+[GIN-VUE-ADMIN]2021/05/20 - 14:37:47.909	[34minfo[0m	D:/gin-vue-admin/server/initialize/router.go:56	router register success
+[GIN-VUE-ADMIN]2021/05/20 - 14:37:47.915	[34minfo[0m	D:/gin-vue-admin/server/core/server.go:28	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/05/20 - 14:46:38.330	[34minfo[0m	D:/gin-vue-admin/server/initialize/router.go:21	use middleware logger
+[GIN-VUE-ADMIN]2021/05/20 - 14:46:38.333	[34minfo[0m	D:/gin-vue-admin/server/initialize/router.go:24	use middleware cors
+[GIN-VUE-ADMIN]2021/05/20 - 14:46:38.333	[34minfo[0m	D:/gin-vue-admin/server/initialize/router.go:26	register swagger handler
+[GIN-VUE-ADMIN]2021/05/20 - 14:46:38.334	[34minfo[0m	D:/gin-vue-admin/server/initialize/router.go:56	router register success
+[GIN-VUE-ADMIN]2021/05/20 - 14:46:38.339	[34minfo[0m	D:/gin-vue-admin/server/core/server.go:28	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/05/20 - 14:52:27.526	[34minfo[0m	D:/gin-vue-admin/server/api/v1/sys_initdb.go:52	前往初始化数据库
+[GIN-VUE-ADMIN]2021/05/20 - 14:55:14.737	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/05/20 - 14:55:14.739	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/05/20 - 14:55:14.739	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/05/20 - 14:55:14.739	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/05/20 - 14:55:14.740	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/05/20 - 14:55:14.740	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/05/20 - 14:56:48.975	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/05/20 - 14:56:48.977	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/05/20 - 14:56:48.977	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/05/20 - 14:56:48.977	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/05/20 - 14:56:48.978	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/05/20 - 14:56:48.982	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/05/20 - 15:07:17.414	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/05/20 - 15:07:17.418	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/05/20 - 15:07:17.418	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/05/20 - 15:07:17.418	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/05/20 - 15:07:17.418	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/05/20 - 15:07:17.430	[34minfo[0m	server run success on 	{"address": ":8888"}
