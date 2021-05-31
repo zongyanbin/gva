@@ -68,15 +68,15 @@
     <el-table-column label="日期" width="180">
          <template slot-scope="scope">{{scope.row.CreatedAt|formatDate}}</template>
     </el-table-column>
-    
-    <el-table-column label="问题编号" prop="question_id" width="120"></el-table-column> 
-    
+<!--    -->
+<!--    <el-table-column label="问题编号" prop="question_id" width="120"></el-table-column>-->
+
     <el-table-column label="问题标题" prop="question_name" width="120"></el-table-column> 
     
     <el-table-column label="说明" prop="direction" width="120"></el-table-column> 
-    
-    <el-table-column label="是否必答" prop="answer" width="120"></el-table-column> 
-    
+
+    <el-table-column label="是否必答" prop="answer" width="120"></el-table-column>
+
     <el-table-column label="题型编号" prop="topic_id" width="120"></el-table-column> 
     
     <el-table-column label="发题人" prop="author" width="120"></el-table-column> 
@@ -102,9 +102,9 @@
 
     <el-dialog :before-close="closeDialog" :visible.sync="dialogFormVisible" title="弹窗操作">
       <el-form :model="formData" label-position="right" label-width="80px">
-         <el-form-item label="问题编号:"><el-input v-model.number="formData.question_id" clearable placeholder="请输入"></el-input>
-      </el-form-item>
-       
+<!--         <el-form-item label="问题编号:"><el-input v-model.number="formData.question_id" clearable placeholder="请输入"></el-input>-->
+<!--      </el-form-item>-->
+
          <el-form-item label="问题标题:">
             <el-input v-model="formData.question_name" clearable placeholder="请输入" ></el-input>
       </el-form-item>
@@ -113,7 +113,8 @@
             <el-input v-model="formData.direction" clearable placeholder="请输入" ></el-input>
       </el-form-item>
        
-         <el-form-item label="是否必答:"><el-input v-model.number="formData.answer" clearable placeholder="请输入"></el-input>
+         <el-form-item label="是否必答:">
+             <el-switch v-model.number="formData.answer" ></el-switch>
       </el-form-item>
        
          <el-form-item label="题型编号:">

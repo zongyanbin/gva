@@ -12,7 +12,7 @@
                 <el-input v-model="formData.direction" clearable placeholder="请输入" ></el-input>
           </el-form-item>
            
-             <el-form-item label="是否必答:"><el-input v-model.number="formData.answer" clearable placeholder="请输入"></el-input>
+             <el-form-item label="是否必答aaa:"><el-input v-model.number="formData.answer" clearable placeholder="请输入"></el-input>
           </el-form-item>
            
              <el-form-item label="题型编号:">
