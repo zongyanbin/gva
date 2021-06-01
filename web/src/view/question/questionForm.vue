@@ -11,10 +11,19 @@
              <el-form-item label="说明:">
                 <el-input v-model="formData.direction" clearable placeholder="请输入" ></el-input>
           </el-form-item>
-           
-             <el-form-item label="是否必答aaa:"><el-input v-model.number="formData.answer" clearable placeholder="请输入"></el-input>
-          </el-form-item>
-           
+
+
+        <el-form-item label="是否必答:">
+<!--          <el-switch v-model.number="formData.answer" ></el-switch>-->
+
+          <el-switch v-model.number="formData.answer"
+                     :active-value="1"
+                     :inactive-value="0"
+                     @change=chang($event,formData.answer)>
+          </el-switch>
+
+        </el-form-item>
+
              <el-form-item label="题型编号:">
                 <el-input v-model="formData.topic_id" clearable placeholder="请输入" ></el-input>
           </el-form-item>

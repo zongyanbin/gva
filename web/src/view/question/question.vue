@@ -28,12 +28,12 @@
         <el-form-item label="问题标题">
           <el-input placeholder="搜索条件" v-model="searchInfo.question_name"></el-input>
         </el-form-item>      
-        <el-form-item label="是否必答">
-          <el-input placeholder="搜索条件" v-model="searchInfo.answer"></el-input>
-        </el-form-item>    
+<!--        <el-form-item label="是否必答">-->
+<!--          <el-input placeholder="搜索条件" v-model="searchInfo.answer"></el-input>-->
+<!--        </el-form-item>    -->
         <el-form-item label="题型编号">
           <el-input placeholder="搜索条件" v-model="searchInfo.topic_id"></el-input>
-        </el-form-item>    
+        </el-form-item>
         <el-form-item label="发题人">
           <el-input placeholder="搜索条件" v-model="searchInfo.author"></el-input>
         </el-form-item>    
@@ -77,10 +77,18 @@
 
     <el-table-column label="是否必答" prop="answer" width="120"></el-table-column>
 
-    <el-table-column label="题型编号" prop="topic_id" width="120"></el-table-column> 
-    
-    <el-table-column label="发题人" prop="author" width="120"></el-table-column> 
-    
+    <el-table-column label="题型编号" width="120">
+      <template slot-scope="scope">
+        <li v-for="(typelist,index) in question_typeList" :key="index">
+          <em v-if="typelist.ID==scope.row.topic_id" >
+          {{ typelist.qtype_name }}
+          </em>
+        </li>
+      </template>
+    </el-table-column>
+
+    <el-table-column label="发题人" prop="author" width="120"></el-table-column>
+
       <el-table-column label="按钮组">
         <template slot-scope="scope">
           <el-button class="table-button" @click="updateQuestion(scope.row)" size="small" type="primary" icon="el-icon-edit">变更</el-button>
@@ -105,25 +113,38 @@
 <!--         <el-form-item label="问题编号:"><el-input v-model.number="formData.question_id" clearable placeholder="请输入"></el-input>-->
 <!--      </el-form-item>-->
 
-         <el-form-item label="问题标题:">
+      <el-form-item label="问题标题:">
             <el-input v-model="formData.question_name" clearable placeholder="请输入" ></el-input>
       </el-form-item>
        
-         <el-form-item label="说明:">
+      <el-form-item label="说明:">
             <el-input v-model="formData.direction" clearable placeholder="请输入" ></el-input>
       </el-form-item>
        
          <el-form-item label="是否必答:">
-             <el-switch v-model.number="formData.answer" ></el-switch>
-      </el-form-item>
+<!--             <el-switch v-model="formData.answer" active-value=1 inactive-value=0 ></el-switch>-->
+           <el-switch v-model="formData.answer"
+                      :active-value="1"
+                      :inactive-value="0"
+                     >
+           </el-switch>
+          </el-form-item>
        
          <el-form-item label="题型编号:">
-            <el-input v-model="formData.topic_id" clearable placeholder="请输入" ></el-input>
-      </el-form-item>
-       
+           <el-select v-model="formData.topic_id" placeholder="请选择">
+             <el-option
+                 v-for="item in question_typeList"
+                 :key="item.ID"
+                 :label="item.qtype_name"
+                 :value="item.ID  + ' '">
+             </el-option>
+           </el-select>
+<!--            <el-input v-model="formData.topic_id" clearable placeholder="请输入" ></el-input>-->
+         </el-form-item>
+
          <el-form-item label="发题人:">
-            <el-input v-model="formData.author" clearable placeholder="请输入" ></el-input>
-      </el-form-item>
+            <el-input v-model="formData.author" clearable placeholder="请输入" :disabled="true" ></el-input>
+          </el-form-item>
        </el-form>
       <div class="dialog-footer" slot="footer">
         <el-button @click="closeDialog">取 消</el-button>
@@ -152,12 +173,17 @@ import {
 import { formatTimeToStr } from "@/utils/date";
 import infoList from "@/mixins/infoList";
 
+
+import {
+  getQuestion_typeList
+} from "@/api/questiontype";  //  此处请自行替换地址
 export default {
   name: "Question",
   mixins: [infoList],
   data() {
     return {
       listApi: getQuestionList,
+      listApiQuestionType:getQuestion_typeList,
       path: path,
       dialogFormVisible: false,
       type: "",
@@ -170,7 +196,8 @@ export default {
             topic_id:"",
             author:"",
             
-      }
+      },
+      question_typeList:"",
     };
   },
   computed: {
@@ -255,6 +282,14 @@ export default {
       },
     async updateQuestion(row) {
       const res = await findQuestion({ ID: row.ID });
+
+      const questionTypeList =  await getQuestion_typeList();
+      ///console.log(questionTypeList)
+      if (questionTypeList.code==0){
+        this.question_typeList = questionTypeList.data.list;
+        console.log( this.question_typeList)
+      }
+
       this.type = "update";
       if (res.code == 0) {
         this.formData = res.data.requestion;
@@ -317,14 +352,21 @@ export default {
       console.log(typeof(getLocalData)); // string
       var jsonObj = JSON.parse(getLocalData);
       console.log(jsonObj.user.userInfo.uuid)
-      this.formData.author= jsonObj.user.userInfo.uuid;
+      this.formData.author= jsonObj.user.userInfo.nickName;
     }
   },
   async created() {
     await this.getTableData();
 
-  
-}
+    // 获取问题类型
+    const questionTypeList =  await getQuestion_typeList();
+    ///console.log(questionTypeList)
+    if (questionTypeList.code==0){
+      this.question_typeList = questionTypeList.data.list;
+      console.log( this.question_typeList)
+    }
+
+  }
 };
 </script>
 

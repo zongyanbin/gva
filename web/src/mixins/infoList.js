@@ -26,6 +26,7 @@ export default {
         handleCurrentChange(val) {
             this.page = val
             this.getTableData()
+            this.getTableDataQuerstionType();
         },
         async getTableData(page = this.page, pageSize = this.pageSize) {
             const table = await this.listApi({ page, pageSize, ...this.searchInfo })
@@ -35,6 +36,16 @@ export default {
                 this.page = table.data.page
                 this.pageSize = table.data.pageSize
             }
+        },
+        async getTableDataQuerstionType(page = this.page, pageSize = this.pageSize) {
+            const table = await this.listApiQuestionType({ page, pageSize, ...this.searchInfo })
+            if (table.code == 0) {
+                this.tableData = table.data.list
+                this.total = table.data.total
+                this.page = table.data.page
+                this.pageSize = table.data.pageSize
+            }
         }
+
     }
 }
