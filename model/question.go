@@ -16,8 +16,6 @@ type Question struct {
       Author  string `json:"author" form:"author" gorm:"column:author;comment:发题人;type:varchar(191);size:191;"`
 }
 
-
 func (Question) TableName() string {
   return "question"
 }
-

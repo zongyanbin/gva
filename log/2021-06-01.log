@@ -1,0 +1,187 @@
+[GIN-VUE-ADMIN]2021/06/01 - 09:37:57.575	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/06/01 - 09:37:57.581	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/06/01 - 09:37:57.582	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/06/01 - 09:37:57.638	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/06/01 - 09:37:57.649	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/06/01 - 09:37:58.531	[34minfo[0m	前往初始化数据库
+[GIN-VUE-ADMIN]2021/06/01 - 09:38:15.483	[34minfo[0m	前往初始化数据库
+[GIN-VUE-ADMIN]2021/06/01 - 09:38:19.891	[34minfo[0m	前往初始化数据库
+[GIN-VUE-ADMIN]2021/06/01 - 09:38:32.751	[34minfo[0m	前往初始化数据库
+[GIN-VUE-ADMIN]2021/06/01 - 09:39:09.312	[34minfo[0m	前往初始化数据库
+[GIN-VUE-ADMIN]2021/06/01 - 09:39:10.828	[34minfo[0m	前往初始化数据库
+[GIN-VUE-ADMIN]2021/06/01 - 09:39:14.508	[34minfo[0m	前往初始化数据库
+[GIN-VUE-ADMIN]2021/06/01 - 09:39:23.674	[34minfo[0m	前往初始化数据库
+[GIN-VUE-ADMIN]2021/06/01 - 09:39:41.626	[34minfo[0m	前往初始化数据库
+[GIN-VUE-ADMIN]2021/06/01 - 09:40:18.783	[34minfo[0m	前往初始化数据库
+[GIN-VUE-ADMIN]2021/06/01 - 09:41:09.639	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/06/01 - 09:41:09.642	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/06/01 - 09:41:09.643	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/06/01 - 09:41:09.643	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/06/01 - 09:41:09.645	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/06/01 - 09:41:09.650	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/06/01 - 09:41:20.915	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 09:50:05.671	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 09:50:57.753	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 09:53:32.836	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 09:54:05.461	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 09:55:42.918	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 09:55:50.404	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 09:58:13.007	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 09:58:56.383	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:00:08.287	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:00:38.439	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:01:54.597	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:03:03.997	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:03:49.046	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:04:00.796	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:05:58.902	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:09:40.261	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:10:38.848	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:12:27.969	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:17:54.604	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:34:12.354	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:51:48.053	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 10:58:43.503	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 11:23:24.853	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 11:23:25.456	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 11:55:38.403	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 11:55:38.919	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:20:43.431	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:20:43.807	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:20:44.470	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:20:46.454	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:48:18.683	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:49:27.733	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:50:59.205	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/06/01 - 14:50:59.208	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/06/01 - 14:50:59.208	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/06/01 - 14:50:59.208	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/06/01 - 14:50:59.209	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/06/01 - 14:50:59.212	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/06/01 - 14:51:05.766	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:59:54.373	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:59:54.491	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:59:55.309	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 14:59:57.826	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:01:47.303	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:01:47.396	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:01:47.515	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:03:01.684	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:03:02.106	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:03:02.302	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:05:53.906	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:09:52.641	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:09:52.755	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:09:52.933	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:09:53.879	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:12:47.723	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:12:47.954	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:12:48.503	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:16:13.281	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:19:13.740	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:19:14.047	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:19:50.273	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:23:42.761	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:24:00.928	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:26:05.287	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:26:05.739	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:33:54.716	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:33:55.481	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:34:17.948	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:38:08.762	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:39:56.962	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:40:16.095	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:40:50.882	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:44:25.884	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:49:27.826	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:55:05.877	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 15:56:47.723	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:03:13.613	[31merror[0m	查询失败!	{"err": "record not found"}
+[GIN-VUE-ADMIN]2021/06/01 - 16:03:18.231	[31merror[0m	查询失败!	{"err": "record not found"}
+[GIN-VUE-ADMIN]2021/06/01 - 16:03:22.035	[31merror[0m	查询失败!	{"err": "record not found"}
+[GIN-VUE-ADMIN]2021/06/01 - 16:05:55.235	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:06:37.917	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:12:03.534	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:16:03.127	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:21:18.423	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:21:39.158	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:24:23.100	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:24:23.832	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:24:25.287	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:24:45.838	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:25:58.167	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:26:40.143	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:27:04.885	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:29:48.307	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:31:23.254	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:32:08.135	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:57:11.051	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:57:50.433	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 16:59:44.488	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:04:32.984	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:17:19.762	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:24:05.727	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:33:21.253	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:33:31.117	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:40:10.186	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:40:53.281	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:43:36.157	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:52:48.994	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:54:03.525	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:54:20.078	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:54:48.027	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:55:57.551	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 17:59:51.307	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:00:27.024	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:01:58.014	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:02:17.820	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:02:50.858	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:03:32.931	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:06:32.337	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:10:31.303	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:11:12.556	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:11:38.995	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:12:03.259	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:13:16.861	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:13:28.358	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:14:44.350	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:18:20.080	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:18:31.328	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:18:46.994	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:19:44.291	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:19:53.581	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:20:23.885	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:21:09.391	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:21:26.286	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:22:44.248	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:24:51.628	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:25:04.866	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:26:45.180	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:27:00.503	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:35:29.877	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:36:08.218	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:36:25.080	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:36:29.352	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:36:36.637	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:36:50.018	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:37:04.195	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:37:25.317	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:37:37.134	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:37:48.363	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:37:52.963	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:39:06.081	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:40:22.062	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:41:08.801	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:51:48.715	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:51:49.746	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 18:59:42.303	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 19:00:14.309	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 19:18:19.997	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 19:21:19.348	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 19:21:36.418	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 19:24:25.461	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 19:24:43.394	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 19:24:55.547	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 19:25:14.369	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 19:25:23.698	[34minfo[0m	数据库无需初始化
+[GIN-VUE-ADMIN]2021/06/01 - 19:30:27.961	[34minfo[0m	数据库无需初始化
