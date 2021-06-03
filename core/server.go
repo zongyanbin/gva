@@ -28,7 +28,7 @@ func RunWindowsServer() {
 	global.GVA_LOG.Info("server run success on ", zap.String("address", address))
 
 	fmt.Printf(`
-	欢迎使用 北京糖业烟酒集团党员定责赋值积分程序
+	欢迎使用 答题小程序
 	当前版本:V2.4.1
 `, address)
 	global.GVA_LOG.Error(s.ListenAndServe().Error())
