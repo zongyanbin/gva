@@ -7,3 +7,5 @@ node_modules/ 表示过滤这个文件夹
 *.ln
 log/*
 /log/*
+config.yaml
+latest_log
