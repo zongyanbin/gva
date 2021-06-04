@@ -70,8 +70,8 @@
     </el-table-column>
 <!--    -->
 <!--    <el-table-column label="问题编号" prop="question_id" width="120"></el-table-column>-->
-
-    <el-table-column label="问题标题" prop="question_name" width="120"></el-table-column> 
+      <el-table-column label="分支机构" prop="branch_office_id" width="120"></el-table-column>
+      <el-table-column label="问题标题" prop="question_name" width="120"></el-table-column>
     
     <el-table-column label="说明" prop="direction" width="120"></el-table-column> 
 
@@ -112,6 +112,10 @@
       <el-form :model="formData" label-position="right" label-width="80px">
 <!--         <el-form-item label="问题编号:"><el-input v-model.number="formData.question_id" clearable placeholder="请输入"></el-input>-->
 <!--      </el-form-item>-->
+
+        <el-form-item label="分支机构:">
+          <el-input v-model.number="formData.branch_office_id" clearable placeholder="请输入" type="number" ></el-input>
+        </el-form-item>
 
       <el-form-item label="问题标题:">
             <el-input v-model="formData.question_name" clearable placeholder="请输入" ></el-input>
@@ -195,7 +199,7 @@ export default {
             answer:0,
             topic_id:"",
             author:"",
-            
+            branch_office_id:0,
       },
       question_typeList:"",
     };

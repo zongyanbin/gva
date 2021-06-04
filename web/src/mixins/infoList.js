@@ -45,6 +45,15 @@ export default {
                 this.page = table.data.page
                 this.pageSize = table.data.pageSize
             }
+        },
+        async getTableDataBranch_officeList(page = this.page, pageSize = this.pageSize) {
+            const table = await this.listApiBranch_officeList({ page, pageSize, ...this.searchInfo })
+            if (table.code == 0) {
+                this.tableData = table.data.list
+                this.total = table.data.total
+                this.page = table.data.page
+                this.pageSize = table.data.pageSize
+            }
         }
 
     }
