@@ -31,9 +31,8 @@
       stripe
       style="width: 100%"
       tooltip-effect="dark"
-      row-key="pid"
       default-expand-all
-      :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
+      :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
     <el-table-column type="selection" width="55"></el-table-column>
     <el-table-column label="日期1" width="180">
@@ -50,8 +49,8 @@
         <el-tag type="danger" v-if="!scope.row.status">禁止</el-tag>
       </template>
     </el-table-column>
-
     <el-table-column label="备注" prop="remarks" width="120"></el-table-column>
+
       <el-table-column label="按钮组">
         <template slot-scope="scope">
           <el-button class="table-button" @click="updateBranch_office(scope.row)" size="small" type="primary" icon="el-icon-edit">变更</el-button>

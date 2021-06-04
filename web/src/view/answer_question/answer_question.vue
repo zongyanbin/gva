@@ -2,17 +2,20 @@
   <div>
     <div class="search-term">
       <el-form :inline="true" :model="searchInfo" class="demo-form-inline">
-        <el-form-item label="试卷标题">
-          <el-input placeholder="搜索条件" v-model="searchInfo.paper_title"></el-input>
-        </el-form-item>        
-        <el-form-item label="试卷状态">
-          <el-input placeholder="搜索条件" v-model="searchInfo.paper_status"></el-input>
+        <el-form-item label="用户编号">
+          <el-input placeholder="搜索条件" v-model="searchInfo.user_id"></el-input>
         </el-form-item>    
+        <el-form-item label="试卷编号">
+          <el-input placeholder="搜索条件" v-model="searchInfo.paper_id"></el-input>
+        </el-form-item>    
+        <el-form-item label="问题编号">
+          <el-input placeholder="搜索条件" v-model="searchInfo.question_id"></el-input>
+        </el-form-item>      
         <el-form-item>
           <el-button @click="onSubmit" type="primary">查询</el-button>
         </el-form-item>
         <el-form-item>
-          <el-button @click="openDialog" type="primary">新增试卷</el-button>
+          <el-button @click="openDialog" type="primary">新增回答问题</el-button>
         </el-form-item>
         <el-form-item>
           <el-popover placement="top" v-model="deleteVisible" width="160">
@@ -36,34 +39,24 @@
       tooltip-effect="dark"
     >
     <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column label="分支机构" prop="branch_office_id" width="120"></el-table-column>
-      <el-table-column label="试卷标题" prop="paper_title" width="120"></el-table-column>
-    <el-table-column label="试卷副标题" prop="paperfu_title" width="120"></el-table-column> 
+    <el-table-column label="日期" width="180">
+         <template slot-scope="scope">{{scope.row.CreatedAt|formatDate}}</template>
+    </el-table-column>
     
-    <el-table-column label="试卷说明" prop="paper_intro" width="120"></el-table-column>
-
-    <el-table-column label="开始时间" width="180">
-      <template slot-scope="scope">{{scope.row.CreatedAt|formatDate}}</template>
-    </el-table-column>
-
-    <el-table-column label="结束时间" width="180">
-        <template slot-scope="scope">{{scope.row.end_at|formatDate1}}</template>
-    </el-table-column>
-
-      <el-table-column label="试卷状态" prop="paper_status" width="120">
-        <template slot-scope="scope">
-          <el-tag type="success" v-if="scope.row.paper_status">已发布</el-tag>
-          <el-tag type="danger" v-if="!scope.row.paper_status">已截止</el-tag>
-        </template>
-      </el-table-column>
-
+    <el-table-column label="用户编号" prop="user_id" width="120"></el-table-column> 
+    
+    <el-table-column label="试卷编号" prop="paper_id" width="120"></el-table-column> 
+    
+    <el-table-column label="问题编号" prop="question_id" width="120"></el-table-column> 
+    
+    <el-table-column label="回答内容json" prop="answer_content" width="120"></el-table-column> 
+    
       <el-table-column label="按钮组">
         <template slot-scope="scope">
-          <el-button class="table-button" @click="updateExam_paper(scope.row)" size="small" type="primary" icon="el-icon-edit">变更</el-button>
+          <el-button class="table-button" @click="updateAnswer_question(scope.row)" size="small" type="primary" icon="el-icon-edit">变更</el-button>
           <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
         </template>
       </el-table-column>
-
     </el-table>
 
     <el-pagination
@@ -79,42 +72,18 @@
 
     <el-dialog :before-close="closeDialog" :visible.sync="dialogFormVisible" title="弹窗操作">
       <el-form :model="formData" label-position="right" label-width="80px">
-         <el-form-item label="试卷标题:">
-            <el-input v-model="formData.paper_title" clearable placeholder="请输入" ></el-input>
+         <el-form-item label="用户编号:"><el-input v-model.number="formData.user_id" clearable placeholder="请输入"></el-input>
       </el-form-item>
-
-         <el-form-item label="试卷副标题:">
-            <el-input v-model="formData.paperfu_title" clearable placeholder="请输入" ></el-input>
+       
+         <el-form-item label="试卷编号:"><el-input v-model.number="formData.paper_id" clearable placeholder="请输入"></el-input>
       </el-form-item>
-
-         <el-form-item label="试卷说明:">
-            <el-input type="textarea" v-model="formData.paper_intro" clearable placeholder="请输入" ></el-input>
+       
+         <el-form-item label="问题编号:"><el-input v-model.number="formData.question_id" clearable placeholder="请输入"></el-input>
       </el-form-item>
-
-        <el-form-item label="开始时间:">
-          <el-date-picker
-              v-model="formData.CreatedAt"
-              type="datetime"
-              placeholder="选择开始日期时间">
-          </el-date-picker>
-        </el-form-item>
-
-        <el-form-item label="结束时间:">
-          <el-date-picker
-              v-model="formData.end_at"
-              type="datetime"
-              placeholder="选择结束日期时间">
-          </el-date-picker>
-        </el-form-item>
-
-        <el-form-item label="试卷状态:">
-         <el-switch v-model="formData.paper_status"
-                     :active-value="1"
-                     :inactive-value="0"
-          >
-          </el-switch>
-        </el-form-item>
-
+       
+         <el-form-item label="回答内容json:">
+            <el-input v-model="formData.answer_content" clearable placeholder="请输入" ></el-input>
+      </el-form-item>
        </el-form>
       <div class="dialog-footer" slot="footer">
         <el-button @click="closeDialog">取 消</el-button>
@@ -126,44 +95,35 @@
 
 <script>
 import {
-    createExam_paper,
-    deleteExam_paper,
-    deleteExam_paperByIds,
-    updateExam_paper,
-    findExam_paper,
-    getExam_paperList
-} from "@/api/exam_paper";  //  此处请自行替换地址
+    createAnswer_question,
+    deleteAnswer_question,
+    deleteAnswer_questionByIds,
+    updateAnswer_question,
+    findAnswer_question,
+    getAnswer_questionList
+} from "@/api/answer_question";  //  此处请自行替换地址
 import { formatTimeToStr } from "@/utils/date";
 import infoList from "@/mixins/infoList";
 export default {
-  name: "Exam_paper",
+  name: "Answer_question",
   mixins: [infoList],
   data() {
     return {
-      listApi: getExam_paperList,
+      listApi: getAnswer_questionList,
       dialogFormVisible: false,
       type: "",
       deleteVisible: false,
-      multipleSelection: [],
-      intOptions:[],
-          formData: {
-            paper_title:"",
-            paperfu_title:"",
-            paper_intro:"",
-            paper_status:0,
+      multipleSelection: [],formData: {
+            user_id:0,
+            paper_id:0,
+            question_id:0,
+            answer_content:"",
+            
       }
     };
   },
   filters: {
     formatDate: function(time) {
-      if (time != null && time != "") {
-        var date = new Date(time);
-        return formatTimeToStr(date, "yyyy-MM-dd hh:mm:ss");
-      } else {
-        return "";
-      }
-    },
-    formatDate1: function(time) {
       if (time != null && time != "") {
         var date = new Date(time);
         return formatTimeToStr(date, "yyyy-MM-dd hh:mm:ss");
@@ -195,7 +155,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-           this.deleteExam_paper(row);
+           this.deleteAnswer_question(row);
         });
       },
       async onDelete() {
@@ -211,7 +171,7 @@ export default {
           this.multipleSelection.map(item => {
             ids.push(item.ID)
           })
-        const res = await deleteExam_paperByIds({ ids })
+        const res = await deleteAnswer_questionByIds({ ids })
         if (res.code == 0) {
           this.$message({
             type: 'success',
@@ -224,26 +184,26 @@ export default {
           this.getTableData()
         }
       },
-    async updateExam_paper(row) {
-      const res = await findExam_paper({ ID: row.ID });
+    async updateAnswer_question(row) {
+      const res = await findAnswer_question({ ID: row.ID });
       this.type = "update";
       if (res.code == 0) {
-        this.formData = res.data.reexam_paper;
+        this.formData = res.data.reanswer_question;
         this.dialogFormVisible = true;
       }
     },
     closeDialog() {
       this.dialogFormVisible = false;
       this.formData = {
-          paper_title:"",
-          paperfu_title:"",
-          paper_intro:"",
-          paper_status:0,
+          user_id:0,
+          paper_id:0,
+          question_id:0,
+          answer_content:"",
           
       };
     },
-    async deleteExam_paper(row) {
-      const res = await deleteExam_paper({ ID: row.ID });
+    async deleteAnswer_question(row) {
+      const res = await deleteAnswer_question({ ID: row.ID });
       if (res.code == 0) {
         this.$message({
           type: "success",
@@ -259,13 +219,13 @@ export default {
       let res;
       switch (this.type) {
         case "create":
-          res = await createExam_paper(this.formData);
+          res = await createAnswer_question(this.formData);
           break;
         case "update":
-          res = await updateExam_paper(this.formData);
+          res = await updateAnswer_question(this.formData);
           break;
         default:
-          res = await createExam_paper(this.formData);
+          res = await createAnswer_question(this.formData);
           break;
       }
       if (res.code == 0) {
@@ -280,14 +240,11 @@ export default {
     openDialog() {
       this.type = "create";
       this.dialogFormVisible = true;
-    },
-
+    }
   },
   async created() {
     await this.getTableData();
   
-    await this.getDict("int");
-    
 }
 };
 </script>
