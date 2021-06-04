@@ -14,6 +14,7 @@ type Exam_paper struct {
       Paper_intro  string `json:"paper_intro" form:"paper_intro" gorm:"column:paper_intro;comment:试卷说明;type:varchar(191);size:191;"`
       Paper_status  int `json:"paper_status" form:"paper_status" gorm:"column:paper_status;comment:试卷状态;type:int;size:11;"`
       End_at *time.Time `json:"end_at" form:"end_at" gorm:"column:end_at;comment:结束时间"`
+      Branch_office_id  int `json:"branch_office_id" form:"branch_office_id" gorm:"column:branch_office_id;comment:分支机构;type:int;size:11;"`
 }
 
 
