@@ -1,0 +1,9 @@
+node_modules/ 表示过滤这个文件夹
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.ln
+/log/
+log/
