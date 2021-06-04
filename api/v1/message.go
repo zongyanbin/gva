@@ -43,12 +43,23 @@ func CreateMessageaa(c *gin.Context)  {
 
 
 func FindPaper(c *gin.Context) {
-	var exam_paper model.Exam_paper
-	_ = c.ShouldBindQuery(&exam_paper)
-	if err, reexam_paper := service.GetExam_paper(exam_paper.ID); err != nil {
-		global.GVA_LOG.Error("查询失败!", zap.Any("err", err))
-		response.FailWithMessage("查询失败", c)
-	} else {
-		response.OkWithData(gin.H{"reexam_paper": reexam_paper}, c)
+	var questions []model.Question
+	global.GVA_DB.Find(&questions)
+	for k,v :=range questions{
+		fmt.Println(k,v,"/n/r")
 	}
+	fmt.Println(questions)
+
+	//var question = make([]*model.Question,0)
+	//global.GVA_DB.Model(&question).Find(&question)
+	//fmt.Printf("%v",question)
+	//
+	//var exam_paper model.Exam_paper
+	//_ = c.ShouldBindQuery(&exam_paper)
+	//if err, reexam_paper := service.GetExam_paper(exam_paper.ID); err != nil {
+	//	global.GVA_LOG.Error("查询失败!", zap.Any("err", err))
+	//	response.FailWithMessage("查询失败", c)
+	//} else {
+	//	response.OkWithData(gin.H{"reexam_paper": reexam_paper}, c)
+	//}
 }

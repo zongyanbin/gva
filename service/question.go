@@ -13,6 +13,7 @@ import (
 //@return: err error
 
 func CreateQuestion(question model.Question) (err error) {
+	global.GVA_DB.AutoMigrate(&question)
 	err = global.GVA_DB.Create(&question).Error
 	return err
 }
