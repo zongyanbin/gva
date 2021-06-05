@@ -75,9 +75,6 @@ func GetQuestionInfoList(info request.QuestionSearch) (err error, list interface
 	db := global.GVA_DB.Model(&model.Question{})
     var questions []model.Question
     // 如果有条件搜索 下方会自动创建搜索语句
-    if info.Question_id != 0 {
-        db = db.Where("`question_id` = ?",info.Question_id)
-    }
     if info.Question_name != "" {
         db = db.Where("`question_name` LIKE ?","%"+ info.Question_name+"%")
     }

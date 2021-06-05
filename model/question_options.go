@@ -13,7 +13,6 @@ type Question_options struct {
       Name  string `json:"name" form:"name" gorm:"column:name;comment:;type:varchar(191);size:191;"`
 }
 
-
 func (Question_options) TableName() string {
   return "question_options"
 }
