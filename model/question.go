@@ -18,7 +18,11 @@ type Question struct {
 	// 关联模型：一对多
 	Question_options []Question_options `gorm:"foreignKey:Question_id;references:ID"`
 }
-
+// 自定义结构体测试查询数据
+type Question_res struct {
+      Question_name  string `json:"question_name" form:"question_name" gorm:"column:question_name;comment:问题标题;type:varchar(191);size:191;"`
+      Direction  string `json:"direction" form:"direction" gorm:"column:direction;comment:说明指导;type:varchar(191);size:191;"`
+}
 func (Question) TableName() string {
 	return "question"
 }

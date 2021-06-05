@@ -43,6 +43,15 @@ func CreateMessageaa(c *gin.Context)  {
 }
 
 func FindPaper(c *gin.Context) {
+
+	var result []model.Question_res
+	global.GVA_DB.Table("question").Select("id,question_name,direction").Scan(&result)
+fmt.Println(result)
+	for k,v :=range result{
+		fmt.Println(k,v)
+	}
+
+
 	//var questions []model.Question
 	//global.GVA_DB.Find(&questions)
 	//for k,v :=range questions{
@@ -50,21 +59,21 @@ func FindPaper(c *gin.Context) {
 	//}
 	//fmt.Println(questions)
 
-	var question = make([]*model.Question,0)
-	global.GVA_DB.Model(&question).Find(&question)
-	fmt.Printf("%v",question)
-
-	var exam_paper model.Exam_paper
-	_ = c.ShouldBindQuery(&exam_paper)
-
-	if err, reexam_paper := service.GetExam_paper(exam_paper.ID); err != nil {
-		global.GVA_LOG.Error("查询失败!", zap.Any("err", err))
-		response.FailWithMessage("查询失败", c)
-	} else {
-		fmt.Println(reexam_paper)
-		c.JSON(200,gin.H{
-			"data":reexam_paper,
-		})
-		//response.OkWithData(gin.H{"reexam_paper": reexam_paper}, c)
-	}
+	//var question = make([]*model.Question,0)
+	//global.GVA_DB.Model(&question).Find(&question)
+	//fmt.Printf("%v",question)
+	//
+	//var exam_paper model.Exam_paper
+	//_ = c.ShouldBindQuery(&exam_paper)
+	//
+	//if err, reexam_paper := service.GetExam_paper(exam_paper.ID); err != nil {
+	//	global.GVA_LOG.Error("查询失败!", zap.Any("err", err))
+	//	response.FailWithMessage("查询失败", c)
+	//} else {
+	//	fmt.Println(reexam_paper)
+	//	c.JSON(200,gin.H{
+	//		"data":reexam_paper,
+	//	})
+	//	//response.OkWithData(gin.H{"reexam_paper": reexam_paper}, c)
+	//}
 }
