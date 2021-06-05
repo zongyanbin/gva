@@ -8,9 +8,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
-// http://localhost:8888/app/question/?QID=1
+
+// http://localhost:8888/app/question/?qid=1
 type Request struct {
-	QID int
+	QID int `form:"qid"`
 }
 
 func GetQuestionList(c *gin.Context) {
@@ -21,7 +22,8 @@ func GetQuestionList(c *gin.Context) {
 		query.Where("id", req.QID)
 	}
 	que := []model.Question{}
-	err := query.Limit(10).Find(&que).Error
+	// 查处题目和其关联的选项
+	err := query.Preload("Question_options").Limit(10).Find(&que).Error
 	if err != nil {
 		global.GVA_LOG.Error("error!", zap.Any("err", err))
 		response.FailWithMessage("error", c)
