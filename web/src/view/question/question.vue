@@ -200,6 +200,7 @@ export default {
             topic_id:"",
             author:"",
             branch_office_id:0,
+            exam_paper_id:0
       },
       question_typeList:"",
     };
@@ -235,7 +236,7 @@ export default {
     },
     loadExcel() {
       this.listApi = loadExcelData;
-      this.getTableData();
+      this.getTableDataSelect();
     },
     downloadExcelTemplate() {
       downloadTemplate('ExcelTemplate.xlsx')
@@ -244,7 +245,7 @@ export default {
       onSubmit() {
         this.page = 1
         this.pageSize = 10          
-        this.getTableData()
+        this.getTableDataSelect()
       },
       handleSelectionChange(val) {
         this.multipleSelection = val
@@ -281,7 +282,7 @@ export default {
               this.page--;
           }
           this.deleteVisible = false
-          this.getTableData()
+          this.getTableDataSelect()
         }
       },
     async updateQuestion(row) {
@@ -309,6 +310,7 @@ export default {
           answer:0,
           topic_id:"",
           author:"",
+         exam_paper_id:0
           
       };
     },
@@ -322,7 +324,7 @@ export default {
         if (this.tableData.length == 1 && this.page > 1 ) {
             this.page--;
         }
-        this.getTableData();
+        this.getTableDataSelect();
       }
     },
     async enterDialog() {
@@ -344,7 +346,9 @@ export default {
           message:"创建/更改成功"
         })
         this.closeDialog();
-        this.getTableData();
+        var  exam_paper_id = this.$route.query.exam_paper_id
+        this.formData.exam_paper_id = exam_paper_id
+        this.getTableDataSelect();
       }
     },
     openDialog() {
@@ -360,7 +364,10 @@ export default {
     }
   },
   async created() {
-    await this.getTableData();
+    var  exam_paper_id = this.$route.query.exam_paper_id
+    this.formData.exam_paper_id = exam_paper_id
+    console.log(exam_paper_id)
+    await this.getTableDataSelect();
 
     // 获取问题类型
     const questionTypeList =  await getQuestion_typeList();
@@ -373,6 +380,5 @@ export default {
   }
 };
 </script>
-
 <style>
 </style>

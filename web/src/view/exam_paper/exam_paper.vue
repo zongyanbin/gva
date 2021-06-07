@@ -60,8 +60,11 @@
 
       <el-table-column label="按钮组">
         <template slot-scope="scope">
+          <el-button type="primary" size="mini" @click="goQuestionUrl(scope.row)">题库</el-button>
           <el-button class="table-button" @click="updateExam_paper(scope.row)" size="small" type="primary" icon="el-icon-edit">变更</el-button>
+          <el-button  icon="el-icon-search"  size="mini" type="primary"   @click="goPreview(scope.row)">预览</el-button>
           <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
+
         </template>
       </el-table-column>
 
@@ -199,6 +202,20 @@ export default {
            this.deleteExam_paper(row);
         });
       },
+    goQuestionUrl(row){
+      this.$confirm('你确定要查看题库吗？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$router.push({path: '/layout/questionP/questionTable', query: {exam_paper_id: row.ID}});
+      });
+    },
+    goPreview(row){
+        var paper_url ="http://localhost:8888/app/paper?paperid="+row.ID
+      window.open(paper_url,'_blank') // 在新窗口打开外链接
+     // this.$router.push({path: 'http://localhost:8888/app/paper', query: {paperid: row.ID}});
+    },
       async onDelete() {
         const ids = []
         if(this.multipleSelection.length == 0){

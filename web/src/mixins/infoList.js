@@ -54,7 +54,16 @@ export default {
                 this.page = table.data.page
                 this.pageSize = table.data.pageSize
             }
-        }
+        },
+        async getTableDataSelect(page = this.page, pageSize = this.pageSize,exam_paper_id =this.formData.exam_paper_id) {
+            const table = await this.listApi({ page, pageSize,exam_paper_id, ...this.searchInfo })
+            if (table.code == 0) {
+                this.tableData = table.data.list
+                this.total = table.data.total
+                this.page = table.data.page
+                this.pageSize = table.data.pageSize
+            }
+        },
 
     }
 }
