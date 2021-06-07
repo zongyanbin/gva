@@ -18,7 +18,7 @@ func CreateSysOperationRecord(sysOperationRecord model.SysOperationRecord) (err 
 }
 
 //@author: [granty1](https://github.com/granty1)
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteSysOperationRecordByIds
 //@description: 批量删除记录
 //@param: ids request.IdsReq
@@ -52,7 +52,7 @@ func GetSysOperationRecord(id uint) (err error, sysOperationRecord model.SysOper
 }
 
 //@author: [granty1](https://github.com/granty1)
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetSysOperationRecordInfoList
 //@description: 分页获取操作记录列表
 //@param: info request.SysOperationRecordSearch

@@ -6,7 +6,7 @@ import (
 	"gin-vue-admin/model/request"
 )
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: CreateQuestion_type
 //@description: 创建Question_type记录
 //@param: question_type model.Question_type
@@ -17,7 +17,7 @@ func CreateQuestion_type(question_type model.Question_type) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteQuestion_type
 //@description: 删除Question_type记录
 //@param: question_type model.Question_type
@@ -28,7 +28,7 @@ func DeleteQuestion_type(question_type model.Question_type) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteQuestion_typeByIds
 //@description: 批量删除Question_type记录
 //@param: ids request.IdsReq
@@ -39,7 +39,7 @@ func DeleteQuestion_typeByIds(ids request.IdsReq) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: UpdateQuestion_type
 //@description: 更新Question_type记录
 //@param: question_type *model.Question_type
@@ -50,7 +50,7 @@ func UpdateQuestion_type(question_type model.Question_type) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetQuestion_type
 //@description: 根据id获取Question_type记录
 //@param: id uint
@@ -61,7 +61,7 @@ func GetQuestion_type(id uint) (err error, question_type model.Question_type) {
 	return
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetQuestion_typeInfoList
 //@description: 分页获取Question_type记录
 //@param: info request.Question_typeSearch

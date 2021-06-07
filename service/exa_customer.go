@@ -6,7 +6,7 @@ import (
 	"gin-vue-admin/model/request"
 )
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: CreateExaCustomer
 //@description: 创建客户
 //@param: e model.ExaCustomer
@@ -17,7 +17,7 @@ func CreateExaCustomer(e model.ExaCustomer) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteFileChunk
 //@description: 删除客户
 //@param: e model.ExaCustomer
@@ -28,7 +28,7 @@ func DeleteExaCustomer(e model.ExaCustomer) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: UpdateExaCustomer
 //@description: 更新客户
 //@param: e *model.ExaCustomer
@@ -39,7 +39,7 @@ func UpdateExaCustomer(e *model.ExaCustomer) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetExaCustomer
 //@description: 获取客户信息
 //@param: id uint
@@ -50,7 +50,7 @@ func GetExaCustomer(id uint) (err error, customer model.ExaCustomer) {
 	return
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetCustomerInfoList
 //@description: 分页获取客户列表
 //@param: sysUserAuthorityID string, info request.PageInfo

@@ -6,7 +6,7 @@ import (
 	"gin-vue-admin/model/request"
 )
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: CreateQuestion_options
 //@description: 创建Question_options记录
 //@param: question_options model.Question_options
@@ -17,7 +17,7 @@ func CreateQuestion_options(question_options model.Question_options) (err error)
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteQuestion_options
 //@description: 删除Question_options记录
 //@param: question_options model.Question_options
@@ -28,7 +28,7 @@ func DeleteQuestion_options(question_options model.Question_options) (err error)
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteQuestion_optionsByIds
 //@description: 批量删除Question_options记录
 //@param: ids request.IdsReq
@@ -39,7 +39,7 @@ func DeleteQuestion_optionsByIds(ids request.IdsReq) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: UpdateQuestion_options
 //@description: 更新Question_options记录
 //@param: question_options *model.Question_options
@@ -50,7 +50,7 @@ func UpdateQuestion_options(question_options model.Question_options) (err error)
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetQuestion_options
 //@description: 根据id获取Question_options记录
 //@param: id uint
@@ -61,7 +61,7 @@ func GetQuestion_options(id uint) (err error, question_options model.Question_op
 	return
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetQuestion_optionsInfoList
 //@description: 分页获取Question_options记录
 //@param: info request.Question_optionsSearch

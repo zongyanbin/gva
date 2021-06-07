@@ -6,7 +6,7 @@ import (
 	"gin-vue-admin/model/request"
 )
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: CreateAnswer_question
 //@description: 创建Answer_question记录
 //@param: answer_question model.Answer_question
@@ -17,7 +17,7 @@ func CreateAnswer_question(answer_question model.Answer_question) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteAnswer_question
 //@description: 删除Answer_question记录
 //@param: answer_question model.Answer_question
@@ -28,7 +28,7 @@ func DeleteAnswer_question(answer_question model.Answer_question) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteAnswer_questionByIds
 //@description: 批量删除Answer_question记录
 //@param: ids request.IdsReq
@@ -39,7 +39,7 @@ func DeleteAnswer_questionByIds(ids request.IdsReq) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: UpdateAnswer_question
 //@description: 更新Answer_question记录
 //@param: answer_question *model.Answer_question
@@ -50,7 +50,7 @@ func UpdateAnswer_question(answer_question model.Answer_question) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetAnswer_question
 //@description: 根据id获取Answer_question记录
 //@param: id uint
@@ -61,7 +61,7 @@ func GetAnswer_question(id uint) (err error, answer_question model.Answer_questi
 	return
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetAnswer_questionInfoList
 //@description: 分页获取Answer_question记录
 //@param: info request.Answer_questionSearch

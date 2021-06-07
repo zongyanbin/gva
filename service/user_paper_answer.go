@@ -6,7 +6,7 @@ import (
 	"gin-vue-admin/model/request"
 )
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: CreateUser_paper_answer
 //@description: 创建User_paper_answer记录
 //@param: User_paper_answer model.User_paper_answer
@@ -18,7 +18,7 @@ func CreateUser_paper_answer(user_paper_answer model.User_paper_answer) (err err
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteUser_paper_answer
 //@description: 删除User_paper_answer记录
 //@param: User_paper_answer model.User_paper_answer
@@ -29,7 +29,7 @@ func DeleteUser_paper_answer(user_paper_answer model.User_paper_answer) (err err
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteUser_paper_answerByIds
 //@description: 批量删除User_paper_answer记录
 //@param: ids request.IdsReq
@@ -40,7 +40,7 @@ func DeleteUser_paper_answerByIds(ids request.IdsReq) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: UpdateUser_paper_answer
 //@description: 更新User_paper_answer记录
 //@param: User_paper_answer *model.User_paper_answer
@@ -51,7 +51,7 @@ func UpdateUser_paper_answer(user_paper_answer model.User_paper_answer) (err err
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetUser_paper_answer
 //@description: 根据id获取User_paper_answer记录
 //@param: id uint
@@ -62,7 +62,7 @@ func GetUser_paper_answer(id uint) (err error, user_paper_answer model.User_pape
 	return
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetUser_paper_answerInfoList
 //@description: 分页获取User_paper_answer记录
 //@param: info request.User_paper_answerSearch

@@ -6,7 +6,7 @@ import (
 	"gin-vue-admin/model/request"
 )
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: CreateBranch_office
 //@description: 创建Branch_office记录
 //@param: branch_office model.Branch_office
@@ -20,7 +20,7 @@ func CreateBranch_office(branch_office model.Branch_office) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteBranch_office
 //@description: 删除Branch_office记录
 //@param: branch_office model.Branch_office
@@ -31,7 +31,7 @@ func DeleteBranch_office(branch_office model.Branch_office) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteBranch_officeByIds
 //@description: 批量删除Branch_office记录
 //@param: ids request.IdsReq
@@ -42,7 +42,7 @@ func DeleteBranch_officeByIds(ids request.IdsReq) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: UpdateBranch_office
 //@description: 更新Branch_office记录
 //@param: branch_office *model.Branch_office
@@ -53,7 +53,7 @@ func UpdateBranch_office(branch_office model.Branch_office) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetBranch_office
 //@description: 根据id获取Branch_office记录
 //@param: id uint
@@ -65,7 +65,7 @@ func GetBranch_office(id uint) (err error, branch_office model.Branch_office) {
 }
 
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetBranch_officeInfoList
 //@description: 分页获取Branch_office记录
 //@param: info request.Branch_officeSearch

@@ -6,7 +6,7 @@ import (
 	"gin-vue-admin/model/request"
 )
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: CreateExam_paper
 //@description: 创建Exam_paper记录
 //@param: exam_paper model.Exam_paper
@@ -19,7 +19,7 @@ func CreateExam_paper(exam_paper model.Exam_paper) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteExam_paper
 //@description: 删除Exam_paper记录
 //@param: exam_paper model.Exam_paper
@@ -30,7 +30,6 @@ func DeleteExam_paper(exam_paper model.Exam_paper) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
 //@function: DeleteExam_paperByIds
 //@description: 批量删除Exam_paper记录
 //@param: ids request.IdsReq
@@ -41,7 +40,7 @@ func DeleteExam_paperByIds(ids request.IdsReq) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: UpdateExam_paper
 //@description: 更新Exam_paper记录
 //@param: exam_paper *model.Exam_paper
@@ -52,7 +51,7 @@ func UpdateExam_paper(exam_paper model.Exam_paper) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetExam_paper
 //@description: 根据id获取Exam_paper记录
 //@param: id uint
@@ -63,7 +62,7 @@ func GetExam_paper(id uint) (err error, exam_paper model.Exam_paper) {
 	return
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetExam_paperInfoList
 //@description: 分页获取Exam_paper记录
 //@param: info request.Exam_paperSearch
@@ -85,4 +84,10 @@ func GetExam_paperInfoList(info request.Exam_paperSearch) (err error, list inter
 	err = db.Count(&total).Error
 	err = db.Limit(limit).Offset(offset).Find(&exam_papers).Error
 	return err, exam_papers, total
+}
+
+//@封装试卷方法
+func GetQuestList(id int)(err error, paper model.Exam_paper) {
+	err =global.GVA_DB.Preload("Question").Preload("Question.Question_options").Where("id", id).Limit(10).Find(&paper).Error
+	return
 }
