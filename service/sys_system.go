@@ -8,7 +8,7 @@ import (
 	"go.uber.org/zap"
 )
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetSystemConfig
 //@description: 读取配置文件
 //@return: err error, conf config.Server
@@ -18,7 +18,7 @@ func GetSystemConfig() (err error, conf config.Server) {
 }
 
 // @description   set system config,
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: SetSystemConfig
 //@description: 设置配置文件
 //@param: system model.System

@@ -92,7 +92,7 @@ func PreviewTemp(autoCode model.AutoCodeStruct) (map[string]string, error) {
 	return ret, nil
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: CreateTemp
 //@description: 创建代码
 //@param: model.AutoCodeStruct
@@ -160,7 +160,7 @@ func CreateTemp(autoCode model.AutoCodeStruct) (err error) {
 	return nil
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetAllTplFile
 //@description: 获取 pathName 文件夹下所有 tpl 文件
 //@param: pathName string, fileList []string
@@ -183,7 +183,7 @@ func GetAllTplFile(pathName string, fileList []string) ([]string, error) {
 	return fileList, err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetTables
 //@description: 获取数据库的所有表名
 //@param: pathName string
@@ -195,7 +195,7 @@ func GetTables(dbName string) (err error, TableNames []request.TableReq) {
 	return err, TableNames
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetDB
 //@description: 获取数据库的所有数据库名
 //@param: pathName string
@@ -207,7 +207,7 @@ func GetDB() (err error, DBNames []request.DBReq) {
 	return err, DBNames
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetDB
 //@description: 获取指定数据库和指定数据表的所有字段名,类型值等
 //@param: pathName string
@@ -264,7 +264,7 @@ func addAutoMoveFile(data *tplData) {
 	}
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@author: [SliverHorn](https://github.com/SliverHorn)
 //@function: CreateApi
 //@description: 自动创建api数据,

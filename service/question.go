@@ -6,18 +6,19 @@ import (
 	"gin-vue-admin/model/request"
 )
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: CreateQuestion
 //@description: 创建Question记录
 //@param: question model.Question
 //@return: err error
 
 func CreateQuestion(question model.Question) (err error) {
+	global.GVA_DB.AutoMigrate(&question)
 	err = global.GVA_DB.Create(&question).Error
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteQuestion
 //@description: 删除Question记录
 //@param: question model.Question
@@ -28,7 +29,7 @@ func DeleteQuestion(question model.Question) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: DeleteQuestionByIds
 //@description: 批量删除Question记录
 //@param: ids request.IdsReq
@@ -39,7 +40,7 @@ func DeleteQuestionByIds(ids request.IdsReq) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: UpdateQuestion
 //@description: 更新Question记录
 //@param: question *model.Question
@@ -50,7 +51,7 @@ func UpdateQuestion(question model.Question) (err error) {
 	return err
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetQuestion
 //@description: 根据id获取Question记录
 //@param: id uint
@@ -61,7 +62,7 @@ func GetQuestion(id uint) (err error, question model.Question) {
 	return
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
+
 //@function: GetQuestionInfoList
 //@description: 分页获取Question记录
 //@param: info request.QuestionSearch
@@ -74,9 +75,6 @@ func GetQuestionInfoList(info request.QuestionSearch) (err error, list interface
 	db := global.GVA_DB.Model(&model.Question{})
     var questions []model.Question
     // 如果有条件搜索 下方会自动创建搜索语句
-    if info.Question_id != 0 {
-        db = db.Where("`question_id` = ?",info.Question_id)
-    }
     if info.Question_name != "" {
         db = db.Where("`question_name` LIKE ?","%"+ info.Question_name+"%")
     }
@@ -89,6 +87,9 @@ func GetQuestionInfoList(info request.QuestionSearch) (err error, list interface
     if info.Author != "" {
         db = db.Where("`author` LIKE ?","%"+ info.Author+"%")
     }
+    if info.Exam_paper_id != 0 {
+		db = db.Where("`exam_paper_id` = ?",info.Exam_paper_id)
+	}
 	err = db.Count(&total).Error
 	err = db.Limit(limit).Offset(offset).Find(&questions).Error
 	return err, questions, total

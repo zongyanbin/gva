@@ -1,13 +1,14 @@
 package v1
 
 import (
+	"fmt"
 	"gin-vue-admin/global"
-    "gin-vue-admin/model"
-    "gin-vue-admin/model/request"
-    "gin-vue-admin/model/response"
-    "gin-vue-admin/service"
-    "github.com/gin-gonic/gin"
-    "go.uber.org/zap"
+	"gin-vue-admin/model"
+	"gin-vue-admin/model/request"
+	"gin-vue-admin/model/response"
+	"gin-vue-admin/service"
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 // @Tags Question
@@ -20,7 +21,9 @@ import (
 // @Router /question/createQuestion [post]
 func CreateQuestion(c *gin.Context) {
 	var question model.Question
+
 	_ = c.ShouldBindJSON(&question)
+	fmt.Println(question)
 	if err := service.CreateQuestion(question); err != nil {
         global.GVA_LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
