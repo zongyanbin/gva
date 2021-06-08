@@ -117,6 +117,10 @@
           <el-input v-model.number="formData.branch_office_id" clearable placeholder="请输入" type="number" ></el-input>
         </el-form-item>
 
+        <el-form-item label="试卷:">
+          <el-input v-model.number="formData.exam_paper_id" clearable placeholder="请输入" type="number" ></el-input>
+        </el-form-item>
+
       <el-form-item label="问题标题:">
             <el-input v-model="formData.question_name" clearable placeholder="请输入" ></el-input>
       </el-form-item>
@@ -331,6 +335,9 @@ export default {
       let res;
       switch (this.type) {
         case "create":
+          var  exam_paper_id = this.$route.query.exam_paper_id
+          this.formData.exam_paper_id = exam_paper_id
+
           res = await createQuestion(this.formData);
           break;
         case "update":

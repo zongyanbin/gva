@@ -349,22 +349,7 @@ backend code file: model\dnModel\api.go
 
 > https://space.bilibili.com/322210472/channel/detail?cid=108884
 
-## 8. Contacts
-### 8.1 Groups
-#### QQ group: 622360840
 
-| QQ group |d
-|  :---:  |
-| <img src="http://qmplusimg.henrongyi.top/qq.jpg" width="180"/> |
-
-
-#### Wechat group: comment "加入gin-vue-admin交流群"
-
-| Wechat |
-|  :---:  | 
-| <img width="150" src="http://qmplusimg.henrongyi.top/qrjjz.png"> 
-
-#### [About Us](https://www.gin-vue-admin.com/about/)
 
 ## 9. Donate
 
