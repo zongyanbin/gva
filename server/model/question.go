@@ -9,7 +9,7 @@ import (
 type Question struct {
 	global.GVA_MODEL
 	Branch_office_id int    `json:"branch_office_id" form:"branch_office_id" gorm:"column:branch_office_id;comment:分支机构;type:int;size:11;"`
-	Exam_paper_id  int `json:"exam_paper_id" form:"exam_paper_id" gorm:"column:exam_paper_id;comment:exam_paper_id;type:int;size:11;"`
+	Exam_paper_id  int `json:"exam_paper_id" form:"exam_paper_id" gorm:"column:exam_paper_id;comment:试卷ID;type:int;size:11;"`
 	Question_name    string `json:"question_name" form:"question_name" gorm:"column:question_name;comment:问题标题;type:varchar(191);size:191;"`
 	Direction        string `json:"direction" form:"direction" gorm:"column:direction;comment:说明指导;type:varchar(191);size:191;"`
 	Answer_state     int    `json:"answer" form:"answer" gorm:"column:answer;comment:是否必答"`

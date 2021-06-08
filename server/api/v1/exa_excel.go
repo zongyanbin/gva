@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"fmt"
 	"gin-vue-admin/global"
 	"gin-vue-admin/model"
 	"gin-vue-admin/model/response"
@@ -37,11 +38,13 @@ func ExportExcel(c *gin.Context) {
 	c.File(filePath)
 }
 
-func WentiExcel(c *gin.Context)  {
-	var excelInfo model.ExcelInfo
-	_ = c.ShouldBindJSON(&excelInfo)
-	filePath :=global.GVA_CONFIG.Excel.Dir + excelInfo.FileName
-	err := service.ParseInfoList2Excel(excelInfo.InfoList, filePath)
+// @问题ex
+func WentiExportExcel(c *gin.Context)  {
+	var wenTiExcelInfo model.WenTiExcelInfo
+	_ = c.ShouldBindJSON(&wenTiExcelInfo)
+	filePath := global.GVA_CONFIG.Excel.Dir + wenTiExcelInfo.FileName
+	fmt.Println(wenTiExcelInfo.FileName)
+	err := service.WenTiParseInfoList2Excel(wenTiExcelInfo.InfoList, filePath)
 	if err != nil {
 		global.GVA_LOG.Error("转换Excel失败!", zap.Any("err", err))
 		response.FailWithMessage("转换Excel失败", c)

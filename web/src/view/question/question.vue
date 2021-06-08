@@ -162,7 +162,7 @@
 const path = process.env.VUE_APP_BASE_API;
 import { mapGetters } from 'vuex';
 
-import { exportExcel, loadExcelData, downloadTemplate } from "@/api/excel";
+import { wenTiExportExcel, loadExcelData, downloadTemplate } from "@/api/excel";
 
 
 
@@ -232,7 +232,7 @@ export default {
         fileName = "ExcelExport.xlsx";
       }
       console.log(this.tableData)
-      exportExcel(this.tableData, fileName);
+      wenTiExportExcel(this.tableData, fileName);
     },
     loadExcel() {
       this.listApi = loadExcelData;

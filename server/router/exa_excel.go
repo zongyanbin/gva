@@ -12,6 +12,6 @@ func InitExcelRouter(Router *gin.RouterGroup) {
 		FileUploadAndDownloadGroup.GET("/loadExcel", v1.LoadExcel)               // 加载Excel数据
 		FileUploadAndDownloadGroup.POST("/exportExcel", v1.ExportExcel)          // 导出Excel
 		FileUploadAndDownloadGroup.GET("/downloadTemplate", v1.DownloadTemplate) // 下载模板文件
-		FileUploadAndDownloadGroup.POST("/wentiExcel", v1. WentiExcel)          // 导出问题Excel
+		FileUploadAndDownloadGroup.POST("/wenTiExportExcel", v1. WentiExportExcel) // 导出问题Excel
 	}
 }

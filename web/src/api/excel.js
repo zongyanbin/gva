@@ -48,6 +48,30 @@ export const exportExcel = (tableData, fileName) => {
     })
 }
 
+
+// @Tags excel
+// @Summary 导出Excel
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce  application/octet-stream
+// @Param data body model.ExcelInfo true "导出Excel文件信息"
+// @Success 200
+// @Router /excel/exportExcel [post]
+export const wenTiExportExcel = (tableData, fileName) => {
+    console.log(tableData)
+    service({
+        url: "/excel/wenTiExportExcel",
+        method: 'post',
+        data: {
+            fileName: fileName,
+            infoList: tableData
+        },
+        responseType: 'blob'
+    }).then((res) => {
+        handleFileError(res, fileName)
+    })
+}
+
 // @Tags excel
 // @Summary 导入Excel文件
 // @Security ApiKeyAuth

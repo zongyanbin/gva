@@ -9,6 +9,26 @@ import (
 	"strconv"
 )
 
+func WenTiParseInfoList2Excel(infoList []model.Question, filePath string) error {
+	excel := excelize.NewFile()
+	excel.SetSheetRow("Sheet1", "A1", &[]string{"ID", "分支机构", "试卷ID", "问题标题", "说明指导", "是否必答", "题型编号", "发题人"})
+	for i, question := range infoList {
+		axis := fmt.Sprintf("A%d", i+2)
+		excel.SetSheetRow("Sheet1", axis, &[]interface{}{
+			question.ID,
+			question.Branch_office_id,
+			question.Exam_paper_id,
+			question.Question_name,
+			question.Direction,
+			question.Answer_state,
+			question.Topic_id,
+			question.Author,
+		})
+	}
+	excel.SaveAs(filePath)
+	return nil
+}
+
 func ParseInfoList2Excel(infoList []model.SysBaseMenu, filePath string) error {
 	excel := excelize.NewFile()
 	excel.SetSheetRow("Sheet1", "A1", &[]string{"ID", "路由Name", "路由Path", "是否隐藏", "父节点", "排序", "文件名称"})
