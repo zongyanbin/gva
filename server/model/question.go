@@ -15,7 +15,8 @@ type Question struct {
 	Answer_state     int    `json:"answer" form:"answer" gorm:"column:answer;comment:是否必答"`
 	Topic_id         string `json:"topic_id" form:"topic_id" gorm:"column:topic_id;comment:题型编号;type:varchar(191);size:191;"`
 	Author           string `json:"author" form:"author" gorm:"column:author;comment:发题人;type:varchar(191);size:191;"`
-	// 关联模型：一对多
+	Hidden        bool      `json:"hidden" form:"hidden" gorm:"column:hidden;comment:是否在列表隐藏"`     // 是否在列表隐藏
+	Sort          int       `json:"sort" form:"sort" gorm:"column:sort;comment排序标记"`          // 排序标记
 	Question_options []Question_options `gorm:"foreignKey:Question_id;references:ID"`
 }
 // 自定义结构体测试查询数据
@@ -23,6 +24,8 @@ type Question_res struct {
       Question_name  string `json:"question_name" form:"question_name" gorm:"column:question_name;comment:问题标题;type:varchar(191);size:191;"`
       Direction  string `json:"direction" form:"direction" gorm:"column:direction;comment:说明指导;type:varchar(191);size:191;"`
 }
+//`hidden` tinyint(1) DEFAULT NULL COMMENT '是否在列表隐藏',
+//`sort` bigint(20) DEFAULT NULL,
 func (Question) TableName() string {
 	return "question"
 }

@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"gin-vue-admin/global"
 	"gin-vue-admin/model"
 	"gin-vue-admin/model/request"
@@ -13,7 +14,6 @@ import (
 //@return: err error
 
 func CreateQuestion(question model.Question) (err error) {
-	global.GVA_DB.AutoMigrate(&question)
 	err = global.GVA_DB.Create(&question).Error
 	return err
 }
@@ -69,10 +69,11 @@ func GetQuestion(id uint) (err error, question model.Question) {
 //@return: err error, list interface{}, total int64
 
 func GetQuestionInfoList(info request.QuestionSearch) (err error, list interface{}, total int64) {
+	fmt.Println(info.Exam_paper_id)
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
     // 创建db
-	db := global.GVA_DB.Model(&model.Question{})
+	db := global.GVA_DB.Debug().Model(&model.Question{})
     var questions []model.Question
     // 如果有条件搜索 下方会自动创建搜索语句
     if info.Question_name != "" {
@@ -90,6 +91,7 @@ func GetQuestionInfoList(info request.QuestionSearch) (err error, list interface
     if info.Exam_paper_id != 0 {
 		db = db.Where("`exam_paper_id` = ?",info.Exam_paper_id)
 	}
+	//db = db.Where("`exam_paper_id` = ?",1)
 	err = db.Count(&total).Error
 	err = db.Limit(limit).Offset(offset).Find(&questions).Error
 	return err, questions, total

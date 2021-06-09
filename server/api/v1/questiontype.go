@@ -128,3 +128,22 @@ func GetQuestion_typeList(c *gin.Context) {
         }, "获取成功", c)
     }
 }
+
+// 获取 question_typelist_all 全部数据
+// @Tags Question_type
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data body request.Question_typeSearch true "分页获取Question_type列表"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /question_type/getQuestion_typeList [get]
+func GetQuestion_typeList_all(c *gin.Context)  {
+	if err, list := service.GetQuestion_typeInfoList_all(); err !=nil{
+		global.GVA_LOG.Error("获取失败", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	}else{
+		response.OkWithDetailed(response.ListResult{
+			List: list,
+		},"获取成功",c)
+	}
+}

@@ -92,6 +92,7 @@ export const createQuestion = (data) => {
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
 // @Router /question/getQuestionList [get]
  export const getQuestionList = (params) => {
+     console.log(params)
      return service({
          url: "/question/getQuestionList",
          method: 'get',

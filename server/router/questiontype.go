@@ -15,5 +15,6 @@ func InitQuestion_typeRouter(Router *gin.RouterGroup) {
 		Question_typeRouter.PUT("updateQuestion_type", v1.UpdateQuestion_type)    // 更新Question_type
 		Question_typeRouter.GET("findQuestion_type", v1.FindQuestion_type)        // 根据ID获取Question_type
 		Question_typeRouter.GET("getQuestion_typeList", v1.GetQuestion_typeList)  // 获取Question_type列表
+		Question_typeRouter.GET("getQuestion_typeList_all", v1.GetQuestion_typeList_all) //获取Question_typeList_all全部列表
 	}
 }

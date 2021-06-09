@@ -78,3 +78,10 @@ func GetQuestion_typeInfoList(info request.Question_typeSearch) (err error, list
 	err = db.Limit(limit).Offset(offset).Find(&question_types).Error
 	return err, question_types, total
 }
+
+// GetQuestion_typeInfoList_all
+func GetQuestion_typeInfoList_all()(err error,list interface{})  {
+	var question_type []model.Question_type
+	err = global.GVA_DB.Find(&question_type).Error
+	return err,question_type
+}

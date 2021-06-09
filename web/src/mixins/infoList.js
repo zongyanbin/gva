@@ -23,9 +23,18 @@ export default {
             this.pageSize = val
             this.getTableData()
         },
+        handleSizeChangeQuestion(val) {
+            this.pageSize = val
+            this.getTableDataSelect()
+        },
         handleCurrentChange(val) {
             this.page = val
             this.getTableData()
+            this.getTableDataQuerstionType();
+        },
+        handleCurrentChangeQestion(val) {
+            this.page = val
+            this.getTableDataSelect()
             this.getTableDataQuerstionType();
         },
         async getTableData(page = this.page, pageSize = this.pageSize) {

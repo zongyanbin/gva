@@ -98,3 +98,12 @@ export const createQuestion_type = (data) => {
          params
      })
  }
+
+ // question list all
+ export const getQuestion_typeList_all = (params) => {
+    return  service({
+        url:"/question_type/getQuestion_typeList_all",
+        method: 'get',
+        params
+    })
+ }

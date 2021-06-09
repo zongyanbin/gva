@@ -65,19 +65,19 @@
       tooltip-effect="dark"
     >
     <el-table-column type="selection" width="55"></el-table-column>
-    <el-table-column label="日期" width="180">
+    <el-table-column label="日期" width="155">
          <template slot-scope="scope">{{scope.row.CreatedAt|formatDate}}</template>
     </el-table-column>
 <!--    -->
 <!--    <el-table-column label="问题编号" prop="question_id" width="120"></el-table-column>-->
-      <el-table-column label="分支机构" prop="branch_office_id" width="120"></el-table-column>
+      <el-table-column label="分支机构" prop="branch_office_id" width="88"></el-table-column>
       <el-table-column label="问题标题" prop="question_name" width="120"></el-table-column>
     
     <el-table-column label="说明" prop="direction" width="120"></el-table-column> 
 
-    <el-table-column label="是否必答" prop="answer" width="120"></el-table-column>
+    <el-table-column label="必答" prop="answer" width="88"></el-table-column>
 
-    <el-table-column label="题型编号" width="120">
+    <el-table-column label="题型编号" width="100">
       <template slot-scope="scope">
         <li v-for="(typelist,index) in question_typeList" :key="index">
           <em v-if="typelist.ID==scope.row.topic_id" >
@@ -86,7 +86,7 @@
         </li>
       </template>
     </el-table-column>
-
+    <el-table-column label="排序 " prop="sort" width="55"></el-table-column>
     <el-table-column label="发题人" prop="author" width="120"></el-table-column>
 
       <el-table-column label="按钮组">
@@ -103,8 +103,8 @@
       :page-sizes="[10, 30, 50, 100]"
       :style="{float:'right',padding:'20px'}"
       :total="total"
-      @current-change="handleCurrentChange"
-      @size-change="handleSizeChange"
+      @current-change="handleCurrentChangeQestion"
+      @size-change="handleSizeChangeQuestion"
       layout="total, sizes, prev, pager, next, jumper"
     ></el-pagination>
 
@@ -128,7 +128,9 @@
       <el-form-item label="说明:">
             <el-input v-model="formData.direction" clearable placeholder="请输入" ></el-input>
       </el-form-item>
-       
+        <el-form-item label="排序:">
+          <el-input v-model.number="formData.sort" clearable placeholder="请输入" type="number" ></el-input>
+        </el-form-item>
          <el-form-item label="是否必答:">
 <!--             <el-switch v-model="formData.answer" active-value=1 inactive-value=0 ></el-switch>-->
            <el-switch v-model="formData.answer"
@@ -191,7 +193,7 @@ export default {
   data() {
     return {
       listApi: getQuestionList,
-      listApiQuestionType:getQuestion_typeList,
+      // listApiQuestionType:getQuestion_typeList,
       path: path,
       dialogFormVisible: false,
       type: "",
@@ -248,7 +250,7 @@ export default {
       //条件搜索前端看此方法
       onSubmit() {
         this.page = 1
-        this.pageSize = 10          
+        this.pageSize = 10
         this.getTableDataSelect()
       },
       handleSelectionChange(val) {

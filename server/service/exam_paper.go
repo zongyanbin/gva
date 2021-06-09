@@ -4,6 +4,7 @@ import (
 	"gin-vue-admin/global"
 	"gin-vue-admin/model"
 	"gin-vue-admin/model/request"
+	"gorm.io/gorm"
 )
 
 
@@ -88,6 +89,8 @@ func GetExam_paperInfoList(info request.Exam_paperSearch) (err error, list inter
 
 //@封装试卷方法
 func GetQuestList(id int)(err error, paper model.Exam_paper) {
-	err =global.GVA_DB.Preload("Question").Preload("Question.Question_options").Where("id", id).Limit(10).Find(&paper).Error
+	err =global.GVA_DB.Preload("Question", func(db *gorm.DB) *gorm.DB {
+		return db.Order("Question.Sort ASC")  // question.sort 问题排序预加载
+	}).Preload("Question.Question_options").Where("id", id).Limit(10).Find(&paper).Error
 	return
 }
