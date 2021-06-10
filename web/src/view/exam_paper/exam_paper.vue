@@ -35,10 +35,10 @@
       style="width: 100%"
       tooltip-effect="dark"
     >
-    <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column label="ID" prop="ID" width="120"></el-table-column>
-      <el-table-column label="分支机构" prop="branch_office_id" width="120"></el-table-column>
-      <el-table-column label="试卷标题" prop="paper_title" width="120"></el-table-column>
+    <el-table-column type="selection" width="40"></el-table-column>
+      <el-table-column label="ID" prop="ID" width="40"></el-table-column>
+      <el-table-column label="分支机构" prop="branch_office_id" width="100"></el-table-column>
+      <el-table-column label="试卷标题" prop="paper_title" width="100"></el-table-column>
     <el-table-column label="试卷副标题" prop="paperfu_title" width="120"></el-table-column> 
     
     <el-table-column label="试卷说明" prop="paper_intro" width="120"></el-table-column>
