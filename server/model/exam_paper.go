@@ -19,7 +19,10 @@ type Exam_paper struct {
       Question []Question `gorm:"foreignKey:Exam_paper_id;references:ID"`
 }
 
-
+// 自定义结构体
+type Request_paper_params struct {
+      Exam_paper_id int `form:"exam_paper_id"`
+}
 func (Exam_paper) TableName() string {
   return "exam_paper"
 }

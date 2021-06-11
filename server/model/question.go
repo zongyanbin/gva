@@ -24,8 +24,6 @@ type Question_res struct {
       Question_name  string `json:"question_name" form:"question_name" gorm:"column:question_name;comment:问题标题;type:varchar(191);size:191;"`
       Direction  string `json:"direction" form:"direction" gorm:"column:direction;comment:说明指导;type:varchar(191);size:191;"`
 }
-//`hidden` tinyint(1) DEFAULT NULL COMMENT '是否在列表隐藏',
-//`sort` bigint(20) DEFAULT NULL,
 func (Question) TableName() string {
 	return "question"
 }

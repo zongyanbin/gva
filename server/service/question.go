@@ -96,3 +96,15 @@ func GetQuestionInfoList(info request.QuestionSearch) (err error, list interface
 	err = db.Limit(limit).Offset(offset).Find(&questions).Error
 	return err, questions, total
 }
+
+//@function: exam_paper_id
+//@description: 根据exam_paper_id获取Question记录
+//@param: id uint
+//@return: err error, question model.Question
+func GetPaperQuestion(exam_paper_id int)(err error,question model.Question)  {
+	fmt.Println(exam_paper_id)
+	err = global.GVA_DB.Where("exam_paper_id = ?",exam_paper_id).Find(question).Error
+	return
+}
+
+

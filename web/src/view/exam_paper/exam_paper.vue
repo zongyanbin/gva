@@ -62,7 +62,8 @@
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="goQuestionUrl(scope.row)">题库</el-button>
           <el-button class="table-button" @click="updateExam_paper(scope.row)" size="small" type="primary" icon="el-icon-edit">变更</el-button>
-          <el-button  icon="el-icon-search"  size="mini" type="primary"   @click="goPreview(scope.row)">预览</el-button>
+          <el-button  icon="el-icon-search"  size="mini" type="primary"   @click="goPreviewQuestion(scope.row)">预览</el-button>
+          <el-button  icon="el-icon-search"  size="mini" type="primary"   @click="goPreview(scope.row)">预览api</el-button>
           <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
 
         </template>
@@ -215,6 +216,10 @@ export default {
         var paper_url ="http://localhost:8888/app/paper?paperid="+row.ID
       window.open(paper_url,'_blank') // 在新窗口打开外链接
      // this.$router.push({path: 'http://localhost:8888/app/paper', query: {paperid: row.ID}});
+      this.$router.push({path:'/layout/exam_paperP/exam_paperPreview',query:{exam_paper_id:row.ID}})
+    },
+    goPreviewQuestion(row){
+        this.$router.push({path:'/layout/exam_paperP/exam_paperPreview',query:{exam_paper_id:row.ID}})
     },
       async onDelete() {
         const ids = []

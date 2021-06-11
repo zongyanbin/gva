@@ -19,6 +19,7 @@ func GetPaperList(c *gin.Context){
 	var requestPaper Request_paper
 	c.ShouldBindQuery(&requestPaper)
 	// service 服务层
+	fmt.Println(requestPaper.Paper_id)
 	if err,list_paper := service.GetQuestList(requestPaper.Paper_id); err != nil{
 		global.GVA_LOG.Error("暂无数据",zap.Any("err", err))
 		response.FailWithMessage("暂无数据",c)

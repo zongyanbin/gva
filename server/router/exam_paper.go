@@ -15,5 +15,7 @@ func InitExam_paperRouter(Router *gin.RouterGroup) {
 		Exam_paperRouter.PUT("updateExam_paper", v1.UpdateExam_paper)    // 更新Exam_paper
 		Exam_paperRouter.GET("findExam_paper", v1.FindExam_paper)        // 根据ID获取Exam_paper
 		Exam_paperRouter.GET("getExam_paperList", v1.GetExam_paperList)  // 获取Exam_paper列表
+		Exam_paperRouter.GET("findExam_paperQuestion", v1.FindExam_paperQuestion)    // 根据ID获取Exam_paper
+
 	}
 }

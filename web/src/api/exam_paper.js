@@ -99,3 +99,27 @@ export const createExam_paper = (data) => {
          params
      })
  }
+
+
+// @Tags Exam_paper
+// @Summary 获取试卷->全部问题
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data body request.PageInfo true "分页获取Exam_paper列表"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /exam_paper/findExam_paper_question [get]
+// export const findExam_paperQuestion = (params) => {
+//     return service({
+//         url:"exam_paper/findExam_paperQuestion",
+//         method: 'get',
+//         params
+//     })
+// }
+export const findExam_paperQuestion = (params) => {
+    return service({
+        url: "/exam_paper/findExam_paperQuestion",
+        method: 'get',
+        params
+    })
+}

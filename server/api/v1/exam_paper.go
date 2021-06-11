@@ -3,12 +3,12 @@ package v1
 import (
 	"fmt"
 	"gin-vue-admin/global"
-    "gin-vue-admin/model"
-    "gin-vue-admin/model/request"
-    "gin-vue-admin/model/response"
-    "gin-vue-admin/service"
-    "github.com/gin-gonic/gin"
-    "go.uber.org/zap"
+	"gin-vue-admin/model"
+	"gin-vue-admin/model/request"
+	"gin-vue-admin/model/response"
+	"gin-vue-admin/service"
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 // @Tags Exam_paper
@@ -129,4 +129,36 @@ func GetExam_paperList(c *gin.Context) {
             PageSize: pageInfo.PageSize,
         }, "获取成功", c)
     }
+}
+
+// @Tags Exam_paper
+// @Summary 获取试卷->全部问题
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data body
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /exam_paper/FindExam_paperQuestion [get]
+func FindExam_paperQuestion(c *gin.Context)  {
+	 var exam_paper_id model.Request_paper_params
+	//var requestPaper app.Request_paper
+	c.ShouldBindQuery(&exam_paper_id) // 获取试卷ID
+	fmt.Println(exam_paper_id.Exam_paper_id)
+	if err, list_paper :=service.GetQuestList(exam_paper_id.Exam_paper_id); err != nil{
+		response.OkWithMessage("没有创建试卷",c)
+	}else{
+		response.OkWithData(gin.H{"list": list_paper},c)
+	}
+}
+
+
+func FindExam_paperQuestion1(c *gin.Context)  {
+	var request_paper_params model.Request_paper_params
+	c.ShouldBindQuery(&request_paper_params) // 获取试卷ID
+	fmt.Println(request_paper_params.Exam_paper_id)
+	if err, list_paper :=service.GetPaperQuestion(request_paper_params.Exam_paper_id); err != nil{
+		response.OkWithMessage("没有创建试卷",c)
+	}else{
+		response.OkWithData(gin.H{"list_paper": list_paper},c)
+	}
 }
