@@ -30,11 +30,11 @@
       tooltip-effect="dark"
     >
     <el-table-column type="selection" width="55"></el-table-column>
+      <el-table-column label="编号" prop="ID" width="120"></el-table-column>
     <el-table-column label="日期" width="180">
          <template slot-scope="scope">{{scope.row.CreatedAt|formatDate}}</template>
     </el-table-column>
-    
-    <el-table-column label="问题名称" prop="qtype_name" width="120"></el-table-column> 
+      <el-table-column label="问题名称" prop="qtype_name" width="120"></el-table-column>
     
     <el-table-column label="类型内容" prop="qtype_content" width="120"></el-table-column> 
     

@@ -8,6 +8,7 @@
           <p>您所填写的问卷未发布，暂不能填写。</p>
       </div>
     </div>
+
     <div class="main" v-else-if="isExpired">
         <div class="header">
           <h1>问卷已过期！</h1>
@@ -16,16 +17,34 @@
           <p>您所填写的问卷已到截止日期，暂不能填写。</p>
         </div>
       </div>
-    <div class="main" v-if="(!isExpired && isNotPublish) || isAdmin">
 
-      aaaa
+    <div class="main" v-if="(!isExpired && isNotPublish)">
       <div class="header">
-        aaa
         <h1>{{tableData.paper_title}}</h1>
       </div>
 
+      <div class="content">
+        <div class="intro">
+          <p>{{tableData.intro}}</p>
+          <p>截止日期：{{ tableData.end_at | renderFormatDate }}</p>
+        </div>
+      </div>
+  <!--ParperQuestion 试卷组件-->
+  <ParperQuestion :tableChildData ="this.tableData">
+     <ElRow>
+       <div style=" text-align:center; margin: 15px;">
+         <el-button type="success"
+                    v-if="isAdmin"
+                    @click="goBack">返回试卷列表
+         </el-button>
+
+         <el-button type="primary"
+                    @click="submitQuestion">提交问卷
+         </el-button>
+       </div>
+     </ElRow>
+  </ParperQuestion>
     </div>
-<!--    <ParperQuestion :tableChildData ="this.tableData.question"></ParperQuestion>>-->
   </div>
 </template>
 <script>
@@ -33,15 +52,19 @@ import {
   findExam_paperQuestion,
 } from "@/api/exam_paper";  //  此处请自行替换地址
 
-// import ParperQuestion from './components/question.vue'
+import ParperQuestion from './components/question.vue'
 export default {
   components: {
-    // ParperQuestion
+     ParperQuestion
   },
   props: [],
   data() {
     return {
+      exam_paper:{
+        topic:[]
+      },
       tableData:'',
+      finished: false,
       time_end:'',
       formData: {
         field101: undefined,
@@ -61,19 +84,28 @@ export default {
       },
     }
   },
+  filters: {  // 前端时间格式2020-02-11T12:24:18.000+0000转化成正常格式
+    renderFormatDate: function (time) {
+      var dateee = new Date(time).toJSON();
+      return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+    },
+  },
   computed: {
-    isAdmin(){
-        return ''
-    },
-    // 判断是否过期 过期1 未过期0
-    isExpired() {
-      alert(this.time_end)
-    },
-    // 判断是否公开
-    isNotPublish() {
-      // alert(this.tableData.paper_status)
-      // return this.tableData.paper_status
+    isAdmin () {
       return 1
+      // return this.$store.getters.isAdmin
+    },
+
+    // true过期  false未过期
+    isExpired () {
+      const timestamp = parseInt(new Date().getTime()/1000);    // 当前时间戳
+      console.log("isExpired:"+this.getTimestamp(this.time_end) , timestamp)
+      return Number(this.getTimestamp(this.time_end) < timestamp)
+    },
+
+    // 判断是否 公开1 禁止0
+    isNotPublish () {
+      return this.tableData.paper_status
     },
   },
   watch: {},
@@ -105,6 +137,22 @@ export default {
 
     getTimestamp(time) { //把时间日期转成时间戳
       return (new Date(time)).getTime() / 1000
+    },
+
+    // 前端时间格式2020-02-11T12:24:18.000+0000转化成正常格式
+    renderTime(date) {
+      var dateee = new Date(date).toJSON();
+      return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+    },
+    goBack () {
+      this.$router.push('/layout/exam_paperP/exam_paperTable')
+    },
+    // 提交问题
+    submitQuestion(){
+      this.tableData.question.forEach((question,index)=>{
+          console.log(question,index)
+      })
+      alert(1)
     }
   }
 }
@@ -134,9 +182,9 @@ export default {
 }
 
 .view-layout .header {
-  padding: 30px 20px;
+  padding: 30px 10px;
   height: auto;
-  min-height: 33px;
+  min-height: 10px;
   border-bottom: 2px dotted #eee;
 }
 
@@ -144,6 +192,8 @@ export default {
   /*width: 500px;*/
   width: 100%;
   margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: -10px;
   text-align: center;
 }
 
