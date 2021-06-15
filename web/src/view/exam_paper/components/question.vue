@@ -139,6 +139,9 @@ export default {
   margin: 5px 0;
 }
 
+.option-item1 {
+  margin: 5px 0;
+}
 .question-desc {
   padding: 5px 0;
 }
