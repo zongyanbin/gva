@@ -15,14 +15,40 @@
           <p class="question-desc" v-if="question.direction !== ''">说明：{{ question.direction }}</p>
 
           <div class="question-options">
-                <!--判断是否有图片-->
-                <div v-if="question.topic_id ===3">
+            <!--三文本框-->
+            <div v-if="question.topic_id ==='2'" >
+              <el-input v-model="question.dydhcs" placeholder="党员大会次数" ></el-input>
+              <el-input v-model="question.dyxzhcs" placeholder="党员小组会次数" ></el-input>
+              <el-input v-model="question.sdkcs" placeholder="上党课次数" ></el-input>
 
+
+<!--              <div class="option-item" v-for="(option, index) in addCheckbox_form.options">-->
+<!--                <el-row>-->
+<!--                  <ElCol span="18">-->
+<!--                  <el-input v-model="question.selectContent3" placeholder="上党课次数" ></el-input>-->
+<!--                  <ElCol span="6">-->
+<!--                    <div class="option-btn">-->
+<!--                      <el-button type="success" icon="plus-round" size="small"-->
+<!--                              @click="addOption(addCheckbox_form.options)"></el-button>-->
+<!--                      <el-button type="warning" icon="close" size="small"></el-button>-->
+<!--                    </div>-->
+<!--                  </ElCol>-->
+<!--                </el-row>-->
+<!--              </div>-->
+
+
+
+            </div>
+
+                <!--判断是否有单图片-->
+                <div v-if="question.topic_id ==='3'">
+
+                  <Upload>a</Upload>
                 </div>
                 <!--判断多选-->
 
                 <!--判断文本-->
-                <div v-if="question.topic_id ==='4 '">
+                <div v-if="question.topic_id ==='1'">
                     <el-input v-model="question.selectContent" placeholder="请输入..." ></el-input>
                 </div>
                 <!--判断图片-->
@@ -40,11 +66,16 @@
 
 </template>
 <script>
+import Upload from './upload.vue'
 export default {
-  components: {},
+  components: {
+    Upload
+  },
   props:['tableChildData'],
   data() {
     return {
+      addRadio_form: {},
+      addCheckbox_form:{},
       addTextarea_form:{},
       environmentForm: {
         items: [{
@@ -96,26 +127,72 @@ export default {
         }
       });
     },
-    //重置事件
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
+
+    // 新建题目
+    addRadio () {
+      this.addRadio_modal = true
+      const radioQues = {
+        question: '单选题目',
+        options: [],
+        description: '',
+        type: '单选',
+        isRequired: true,
+        selectContent: '',
+        additional: ''
+      }
+      this.addRadio_form = Object.assign({}, radioQues)
+      const tempData = {
+        content: '选项',
+        isAddition: false
+      }
+      this.addRadio_form.options.splice(0, this.addRadio_form.options.length, Object.assign({}, tempData))
     },
-    //移除表单项事件
-    removeEnvironmentForm(item) {
-      var index = this.environmentForm.items.indexOf(item)
-      if (index !== -1) {
-        this.environmentForm.items.splice(index, 1)
+    addCheckbox () {
+      this.addCheckbox_modal = true
+      const checkboxQues = {
+        question: '多选题目',
+        options: [],
+        description: '',
+        type: '多选',
+        isRequired: true,
+        selectMultipleContent: []
+      }
+      this.addCheckbox_form = Object.assign({}, checkboxQues)
+      const tempData = {
+        content: '选项',
+        isAddition: false
+      }
+      this.addCheckbox_form.options.splice(0, this.addCheckbox_form.options.length, Object.assign({}, tempData))
+    },
+    addTextarea () {
+      this.addTextarea_modal = true
+      const TextareaQues = {
+        question: '文本题目',
+        description: '',
+        type: '文本',
+        isRequired: true,
+        selectContent: ''
+      }
+      this.addTextarea_form = Object.assign({}, TextareaQues)
+    },
+    // 新增选项
+    addOption (source) {
+      const tempData = {
+        content: '选项',
+        isAddition: false
+      }
+      source.push(Object.assign({}, tempData))
+    },
+    // 删除选项
+    delOption (source, index) {
+      if (source.length > 1) {
+        source.splice(index, 1)
+      } else {
+        this.$Message.warning('最后一个啦，不要删除哦')
       }
     },
-    //添加表单项事件
-    addEnvironmentForm() {
-      this.environmentForm.items.push({
-        name: '',
-        variable: '',
-        description: '',
-        key: Date.now()
-      });
-    }
+    // 提交题目
+
   },
 }
 

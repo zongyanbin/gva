@@ -146,7 +146,7 @@
                  v-for="item in question_typeList"
                  :key="item.ID"
                  :label="item.qtype_name"
-                 :value="item.ID  + ' '">
+                 :value="item.ID.toString()">
              </el-option>
            </el-select>
 <!--            <el-input v-model="formData.topic_id" clearable placeholder="请输入" ></el-input>-->

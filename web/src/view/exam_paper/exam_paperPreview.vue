@@ -51,11 +51,13 @@
 import {
   findExam_paperQuestion,
 } from "@/api/exam_paper";  //  此处请自行替换地址
-
+// import {
+//   createuser_paper_answer,
+// } from "@/api/user_paper_answer";
 import ParperQuestion from './components/question.vue'
 export default {
   components: {
-     ParperQuestion
+     ParperQuestion,
   },
   props: [],
   data() {
@@ -149,10 +151,95 @@ export default {
     },
     // 提交问题
     submitQuestion(){
-      this.tableData.question.forEach((question,index)=>{
-          console.log(question,index)
+
+      //const Id = ''
+      const result = []
+      console.log(this.tableData.Question)
+      console.log("=================")
+      this.tableData.Question.forEach((Question,index)=>{
+        if((Question.topic_id ==="1")){ // 1 一个文本框
+
+          const score = parseFloat(Question.selectContent)
+          console.log("一个文本框Question",Question)
+          const curQues = {
+            //user_id :user_id,
+            paper_id :Question.exam_paper_id,
+            question_id :Question.ID,
+            answer_content :Question.selectContent,
+            score :score,
+          }
+          result.push(curQues)
+          console.log("一个文本框 curQues:"+JSON.stringify(curQues))
+        }else if(Question.topic_id ==="2"){  //2 三个文本框
+
+          console.log("========Question======")
+
+          var inputContent = new Array();
+          inputContent['dydhcs'] = Question.dydhcs;
+          inputContent['dyxzhcs'] = Question.dyxzhcs;
+          inputContent['sdkcs'] = Question.sdkcs;
+
+         var json_inputContent= {"dydhcs":Question.dydhcs,"dyxzhcs":Question.dyxzhcs,"sdkcs":Question.sdkcs}
+          const score = parseFloat(Question.dydhcs)+ parseFloat(Question.dyxzhcs)+ parseFloat(Question.sdkcs)
+          console.log("score"+score,json_inputContent)
+
+          const curQues = {
+            // user_id :user_id,
+               paper_id :Question.exam_paper_id,
+               question_id :Question.ID,
+               answer_content :json_inputContent,
+               score :score,
+          }
+
+          result.push(curQues)
+          console.log("三文本框：",(JSON.stringify(curQues)))
+        }else if(Question.type ==="单选"){
+          const curQues = {
+            // user_id :user_id,
+            // paper_id :paper_id,
+            // question_id :question_id,
+            // answer_content :answer_content,
+            // score :score,
+
+          }
+          result.push(curQues)
+          console.log("单选 curQues:"+curQues)
+        }else if(Question.type ==="多选"){
+          const curQues = {
+            // user_id :user_id,
+            // paper_id :paper_id,
+            // question_id :question_id,
+            // answer_content :answer_content,
+            // score :score,
+          }
+          result.push(curQues)
+          console.log("多选 curQues:"+curQues)
+        }else{
+          const curQues = {
+            // user_id :user_id,
+            // paper_id :paper_id,
+            // question_id :question_id,
+            // answer_content :answer_content,
+            // score :score,
+          }
+          result.push(curQues)
+          console.log("else curQues:"+curQues)
+        }
+         console.log(Question,index)
       })
-      alert(1)
+      console.log("all_data:",result)
+      // 防止重复提交
+      // this.finished = true
+      // const res = createuser_paper_answer(this.formData);
+      // if (res.code == 0) {
+      //   this.$message({
+      //     type:"success",
+      //     message:"创建"
+      //   })
+      //   this.closeDialog();
+      //   this.getTableData();
+      // }
+
     }
   }
 }
