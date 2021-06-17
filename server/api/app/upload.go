@@ -1,6 +1,5 @@
 package app
 import (
-	"fmt"
 	"gin-vue-admin/global"
 "gin-vue-admin/model"
 "gin-vue-admin/model/request"
@@ -19,8 +18,7 @@ import (
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"上传成功"}"
 // @Router /fileUploadAndDownload/upload [post]
 func UploadFile(c *gin.Context) {
-	fmt.Println("1111")
-	var file model.ExaFileUploadAndDownload
+	var file model.Attachment
 	noSave := c.DefaultQuery("noSave", "0")
 	_, header, err := c.Request.FormFile("file")
 	if err != nil {
@@ -28,13 +26,13 @@ func UploadFile(c *gin.Context) {
 		response.FailWithMessage("接收文件失败", c)
 		return
 	}
-	err, file = service.UploadFile(header, noSave) // 文件上传后拿到文件路径
+	err, file = service.ExamUploadFile(header, noSave) // 文件上传后拿到文件路径
 	if err != nil {
 		global.GVA_LOG.Error("修改数据库链接失败!", zap.Any("err", err))
 		response.FailWithMessage("修改数据库链接失败", c)
 		return
 	}
-	response.OkWithDetailed(response.ExaFileResponse{File: file}, "上传成功", c)
+	response.OkWithDetailed(response.ExamFileResponse{File: file}, "上传成功", c)
 }
 
 // @Tags ExaFileUploadAndDownload
