@@ -1,9 +1,10 @@
 <template>
   <div>
     <el-upload
-        :action="`${path}/fileUploadAndDownload/upload`"
+        :action="`${path}/extend/upload`"
         list-type="picture-card"
         :on-preview="handlePictureCardPreview"
+        :on-success="handleImageSuccess"
         :on-remove="handleRemove">
       <i class="el-icon-plus"></i>
     </el-upload>
@@ -35,7 +36,17 @@ export default {
       console.log("file:",file)
       this.dialogImageUrl = file.url;
       this.dialogVisible = true;
-    }
+    },
+
+    handleImageSuccess(res) {
+    //  console.log(res);
+      // this.imageUrl = URL.createObjectURL(file.raw);
+      const { data } = res;
+      if (data.file) {
+        this.$emit("extend_data", data.file.url);
+      }
+    },
+
   }
 }
 </script>

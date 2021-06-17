@@ -1,8 +1,9 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
   <ElRow class="question-wrapper">
 
     <el-col :span="24" class="question-list">
       <p v-if="tableChildData.length == 0" style="margin: 10px 0">一点东西都没有，赶快点击上方按钮添加题目吧！</p>
+
       <ElRow type="flex" justify="start" align="top" v-for="(question, index) in tableChildData.Question" class="question-item" :key="question.ID">
         <el-col :span="6" style="width: 60px; text-align: center">
               <h2>Q{{ index + 1 }}:</h2>
@@ -21,7 +22,6 @@
               <el-input v-model="question.dyxzhcs" placeholder="党员小组会次数" ></el-input>
               <el-input v-model="question.sdkcs" placeholder="上党课次数" ></el-input>
 
-
 <!--              <div class="option-item" v-for="(option, index) in addCheckbox_form.options">-->
 <!--                <el-row>-->
 <!--                  <ElCol span="18">-->
@@ -36,14 +36,20 @@
 <!--                </el-row>-->
 <!--              </div>-->
 
-
-
             </div>
 
                 <!--判断是否有单图片-->
                 <div v-if="question.topic_id ==='3'">
+                  原始数据{{question}}
+                  </br>
+                  -----------------------
+                        {{idImgArr}}
+                  <el-input v-model="question.imgurl" placeholder="请输入..." ></el-input>
 
-                  <Upload>a</Upload>
+                  <el-input v-model="question.teeeeee" placeholder="请输入..." ></el-input>
+                  <el-input v-model="question.aaaaaa" placeholder="请输入..." ></el-input>
+                  <el-input v-model="question.ddddd" placeholder="请输入..." ></el-input>
+                  <Upload @extend_data="getChildData"></Upload> // 上传图片组件组件 返回图片地址
                 </div>
                 <!--判断多选-->
 
@@ -55,15 +61,14 @@
           </div>
         </el-col>
        </ElRow>
+
       <!--卡槽 传递按钮-->
       <div class="question-btns">
         <slot></slot>
       </div>
-
     </el-col>
 
   </ElRow>
-
 </template>
 <script>
 import Upload from './upload.vue'
@@ -74,6 +79,10 @@ export default {
   props:['tableChildData'],
   data() {
     return {
+      question:{
+        imgurl:'',
+      },
+      idImgArr:[],
       addRadio_form: {},
       addCheckbox_form:{},
       addTextarea_form:{},
@@ -192,7 +201,43 @@ export default {
       }
     },
     // 提交题目
+     //图片返回地址 bangmang
+    // getChildData(value){
+    //   this.question.imgurl = this.idImgArr;
+    //   this.idImgArr.push(value)
+    //   let arr=[]
+    // this.tableChildData.Question.forEach((item)=>{
+    //   let obj={
+    //     img:value
+    //   }
+    //   arr.push(obj)
+    // })
+    //   console.log(arr)
+    //   this.question.push(arr)
+    //   alert(value)
+    // }
 
+    // 自己修改
+    getChildData(value){
+      this.question.imgurl = value
+
+      let arr=[]
+      let obj={
+        img:value
+      }
+
+      this.tableChildData.Question.forEach((item)=>{
+        if(item.topic_id ==='3'){
+          arr.push(obj)
+          this.idImgArr.push(obj)
+          this.$set(item,'imgurl', JSON.stringify(this.idImgArr))
+        }
+
+      })
+      console.log(arr)
+      console.log(this.idImgArr)
+      alert(value)
+    }
   },
 }
 

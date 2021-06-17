@@ -213,7 +213,7 @@ export default {
       });
     },
     goPreview(row){
-        var paper_url ="http://localhost:8888/app/paper?paperid="+row.ID
+        var paper_url ="http://localhost:8888/paper?paperid="+row.ID
       window.open(paper_url,'_blank') // 在新窗口打开外链接
      // this.$router.push({path: 'http://localhost:8888/app/paper', query: {paperid: row.ID}});
       this.$router.push({path:'/layout/exam_paperP/exam_paperPreview',query:{exam_paper_id:row.ID}})

@@ -155,7 +155,7 @@ export default {
       //const Id = ''
       const result = []
       console.log(this.tableData.Question)
-      console.log("=================")
+      console.log("=======shang==========")
       this.tableData.Question.forEach((Question,index)=>{
         if((Question.topic_id ==="1")){ // 1 一个文本框
 
