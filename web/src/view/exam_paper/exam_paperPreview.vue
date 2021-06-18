@@ -30,7 +30,7 @@
         </div>
       </div>
   <!--ParperQuestion 试卷组件-->
-  <ParperQuestion :tableChildData ="this.tableData">
+  <ParperQuestion :tableChildData ="this.tableData"  ref="mylistquestion">
      <ElRow>
        <div style=" text-align:center; margin: 15px;">
          <el-button type="success"
@@ -68,22 +68,6 @@ export default {
       tableData:'',
       finished: false,
       time_end:'',
-      formData: {
-        field101: undefined,
-        field102: undefined,
-      },
-      rules: {
-        field101: [{
-          required: true,
-          message: '请输入单行文本',
-          trigger: 'blur'
-        }],
-        field102: [{
-          required: true,
-          message: '请输入多行文本',
-          trigger: 'blur'
-        }],
-      },
     }
   },
   filters: {  // 前端时间格式2020-02-11T12:24:18.000+0000转化成正常格式
@@ -115,6 +99,13 @@ export default {
     this.tableData=this.getTableData()
   },
   mounted() {},
+  // 与生命周期同级 provide inject
+  privide() {
+    return {
+      //子组件调用的名字：对应的方法（当前页面，祖父级元素的方法）
+     // submitaaa: this.submitForm()
+    }
+  },
   methods: {
     submitForm() {
       this.$refs['elForm'].validate(valid => {
@@ -151,12 +142,29 @@ export default {
     },
     // 提交问题
     submitQuestion(){
+      // 我去调用子组件
+      this.$refs.mylistquestion.childQustion()
 
       //const Id = ''
       const result = []
       console.log(this.tableData.Question)
       console.log("=======shang==========")
       this.tableData.Question.forEach((Question,index)=>{
+        if((Question.topic_id ==="5")){ // 1 一个文本框 2.
+
+          const score = parseFloat(Question.selectContent)
+          console.log("一个文本框Question",Question)
+          const curQues = {
+            //user_id :user_id,
+            paper_id :Question.exam_paper_id,
+            question_id :Question.ID,
+            answer_content :Question.infoContent,
+            score :score,
+          }
+          result.push(curQues)
+          console.log("动态文本 curQues:"+JSON.stringify(curQues))
+        }
+
         if((Question.topic_id ==="3")){ // 1 一个文本框 2.多图文本框
 
           const score = parseFloat(Question.selectContent)
@@ -185,7 +193,25 @@ export default {
           console.log("一个文本框 curQues:"+JSON.stringify(curQues))
         }else if(Question.topic_id ==="2"){  //2 三个文本框
 
-          console.log("========Question======")
+          // //let arr=[]
+          // let obj={
+          //   img:value
+          // }
+          // this.tableChildData.Question.forEach((item)=>{
+          //   if(item.topic_id ==='3'){
+          //     //  arr.push(obj)
+          //     this.idImgArr.push(obj)
+          //     this.$set(item,'imgurl', JSON.stringify(this.idImgArr))
+          //   }
+          let obj={
+            list:{
+              dydhcs:Question.dydhcs,
+              dyxzhcs:Question.dyxzhcs,
+              sdkcs:Question.sdkcs,
+            }
+          }
+          this.$set(Question,'data', JSON.stringify(obj))
+            console.log("========Question======")
 
           var inputContent = new Array();
           inputContent['dydhcs'] = Question.dydhcs;
@@ -200,7 +226,7 @@ export default {
             // user_id :user_id,
                paper_id :Question.exam_paper_id,
                question_id :Question.ID,
-               answer_content :json_inputContent,
+               answer_content :Question.data,
                score :score,
           }
 

@@ -38,23 +38,27 @@
 
             </div>
 
-                <!--判断是否有单图片-->
-                <div v-if="question.topic_id ==='3'">
+            <!--判断是否有单图片-->
+            <div v-if="question.topic_id ==='3'">
 <!--                  原始数据{{question}}-->
 <!--                  </br>-->
 <!--                        {{idImgArr}}-->
-                  <el-input v-model="question.selectContent" placeholder="请输入..." ></el-input>
-                  <Upload @extend_data="getChildData"></Upload> // 上传图片组件组件 返回图片地址
+              <el-input v-model="question.selectContent" placeholder="请输入..." ></el-input>
+              <Upload @extend_data="getChildData"></Upload>
+            </div>
 
-                  <Textmore ref="getChildTextmore"></Textmore>
-                </div>
+            <!--三个文本框加时间-->
+            <div v-if="question.topic_id ==='5'">
+            <el-input v-model="question.selectContent" placeholder="请输入..." ></el-input>
+              <Textmore></Textmore>
+            </div>
                 <!--判断多选-->
 
-                <!--判断文本-->
-                <div v-if="question.topic_id ==='1'">
-                    <el-input v-model="question.selectContent" placeholder="请输入..." ></el-input>
-                </div>
-                <!--判断图片-->
+            <!--判断文本-->
+            <div v-if="question.topic_id ==='1'">
+                <el-input v-model="question.selectContent" placeholder="请输入..." ></el-input>
+            </div>
+            <!--判断图片-->
           </div>
         </el-col>
        </ElRow>
@@ -68,6 +72,7 @@
   </ElRow>
 </template>
 <script>
+import globalBus from '@/utils/global-bus'
 import Upload from './upload.vue'
 import Textmore from './textmore.vue'
 export default {
@@ -80,8 +85,10 @@ export default {
     return {
       question:{
         imgurl:'',
+        info:'',
       },
       idImgArr:[],
+      infoArr:[],
       addRadio_form: {},
       addCheckbox_form:{},
       addTextarea_form:{},
@@ -94,27 +101,15 @@ export default {
       },
       list:'',
       isPreview:'',
-      formData: {
-        field101: undefined,
-        field102: undefined,
-      },
-      rules: {
-        field101: [{
-          required: true,
-          message: '请输入单行文本',
-          trigger: 'blur'
-        }],
-        field102: [{
-          required: true,
-          message: '请输入多行文本',
-          trigger: 'blur'
-        }],
-      },
     }
   },
   computed: {},
   watch: {},
-  created() {},
+  created() {
+   // console.log('2')
+    this.getTextMore()
+   // this.childQustion()
+  },
   mounted() {},
   methods: {
     // submitForm1() {
@@ -222,9 +217,8 @@ export default {
 
       //let arr=[]
       let obj={
-        img:value
+        list:value
       }
-
       this.tableChildData.Question.forEach((item)=>{
         if(item.topic_id ==='3'){
         //  arr.push(obj)
@@ -234,9 +228,40 @@ export default {
 
       })
      // console.log(arr)
-      console.log(this.idImgArr)
-      alert(value)
-    }
+     //  console.log(this.idImgArr)
+     //  alert(value)
+    },
+    getTextMore(){
+
+      // 插入字段
+      // let obj = {
+      //   info:'2222222222222222'
+      // }
+      // this.info.push(obj)
+      // this.$set("item",'info',JSON.stringify(this.info))
+
+      globalBus.$on('extend_textmore', (data) => {
+        console.log('extend_textmore', data)
+        this.question.info = data
+      })
+
+
+
+    },
+
+    // 父类调用我
+    childQustion(){
+      globalBus.$emit('questiontext')
+      // 插入字段
+
+      this.tableChildData.Question.forEach((item)=>{
+        if(item.topic_id ==='5'){
+          this.$set(item,'infoContent', JSON.stringify(this.question.info))
+        }
+      })
+
+    },
+    //接受子组件数据
   },
 }
 

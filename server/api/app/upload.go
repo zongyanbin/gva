@@ -1,12 +1,13 @@
 package app
+
 import (
 	"gin-vue-admin/global"
-"gin-vue-admin/model"
-"gin-vue-admin/model/request"
-"gin-vue-admin/model/response"
-"gin-vue-admin/service"
-"github.com/gin-gonic/gin"
-"go.uber.org/zap"
+	"gin-vue-admin/model"
+	"gin-vue-admin/model/request"
+	"gin-vue-admin/model/response"
+	"gin-vue-admin/service"
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 // @Tags ExaFileUploadAndDownload

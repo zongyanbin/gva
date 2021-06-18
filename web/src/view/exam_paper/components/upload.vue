@@ -43,7 +43,7 @@ export default {
       // this.imageUrl = URL.createObjectURL(file.raw);
       const { data } = res;
       if (data.file) {
-        this.$emit("extend_data", data.file.url);
+        this.$emit("extend_data", data);
       }
     },
 
