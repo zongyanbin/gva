@@ -16,7 +16,7 @@ import (
 //@param: file model.Attachment
 //@return: error
 
-func ExamUpload(file model.Attachment) error {
+func ExamUpload(file *model.Attachment) error {
 	return global.GVA_DB.Create(&file).Error
 }
 
@@ -85,7 +85,7 @@ func ExamUploadFile(header *multipart.FileHeader, noSave string) (err error, fil
 			Exts:  s[len(s)-1],
 			Key:  key,
 		}
-		return ExamUpload(f), f
+		return ExamUpload(&f), f
 	}
 	return
 }
