@@ -40,16 +40,13 @@
 
                 <!--判断是否有单图片-->
                 <div v-if="question.topic_id ==='3'">
-                  原始数据{{question}}
-                  </br>
-                  -----------------------
-                        {{idImgArr}}
-                  <el-input v-model="question.imgurl" placeholder="请输入..." ></el-input>
-
-                  <el-input v-model="question.teeeeee" placeholder="请输入..." ></el-input>
-                  <el-input v-model="question.aaaaaa" placeholder="请输入..." ></el-input>
-                  <el-input v-model="question.ddddd" placeholder="请输入..." ></el-input>
+<!--                  原始数据{{question}}-->
+<!--                  </br>-->
+<!--                        {{idImgArr}}-->
+                  <el-input v-model="question.selectContent" placeholder="请输入..." ></el-input>
                   <Upload @extend_data="getChildData"></Upload> // 上传图片组件组件 返回图片地址
+
+                  <Textmore ref="getChildTextmore"></Textmore>
                 </div>
                 <!--判断多选-->
 
@@ -72,9 +69,11 @@
 </template>
 <script>
 import Upload from './upload.vue'
+import Textmore from './textmore.vue'
 export default {
   components: {
-    Upload
+    Upload,
+    Textmore
   },
   props:['tableChildData'],
   data() {
@@ -221,20 +220,20 @@ export default {
     getChildData(value){
       this.question.imgurl = value
 
-      let arr=[]
+      //let arr=[]
       let obj={
         img:value
       }
 
       this.tableChildData.Question.forEach((item)=>{
         if(item.topic_id ==='3'){
-          arr.push(obj)
+        //  arr.push(obj)
           this.idImgArr.push(obj)
           this.$set(item,'imgurl', JSON.stringify(this.idImgArr))
         }
 
       })
-      console.log(arr)
+     // console.log(arr)
       console.log(this.idImgArr)
       alert(value)
     }

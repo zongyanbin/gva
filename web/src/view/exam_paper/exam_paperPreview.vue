@@ -157,7 +157,20 @@ export default {
       console.log(this.tableData.Question)
       console.log("=======shang==========")
       this.tableData.Question.forEach((Question,index)=>{
-        if((Question.topic_id ==="1")){ // 1 一个文本框
+        if((Question.topic_id ==="3")){ // 1 一个文本框 2.多图文本框
+
+          const score = parseFloat(Question.selectContent)
+          console.log("一个文本框Question",Question)
+          const curQues = {
+            //user_id :user_id,
+            paper_id :Question.exam_paper_id,
+            question_id :Question.ID,
+            answer_content :Question.imgurl,
+            score :score,
+          }
+          result.push(curQues)
+          console.log("一个文本框 curQues:"+JSON.stringify(curQues))
+        }else if((Question.topic_id ==="1")){ // 1 一个文本框
 
           const score = parseFloat(Question.selectContent)
           console.log("一个文本框Question",Question)
