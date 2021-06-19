@@ -5,7 +5,9 @@
         list-type="picture-card"
         :on-preview="handlePictureCardPreview"
         :on-success="handleImageSuccess"
+        :data="form"
         :on-remove="handleRemove">
+
       <i class="el-icon-plus"></i>
     </el-upload>
     <el-dialog :visible.sync="dialogVisible">
@@ -20,13 +22,20 @@ const path = process.env.VUE_APP_BASE_API;
 export default {
   data() {
     return {
+      form:{
+        type:this.typeString
+      },
       dialogImageUrl: '',
       dialogVisible: false,
       path: path,
     };
   },
+  props:{'typeString':String},
   computed: {
     ...mapGetters("user", ["userInfo", "token"])
+  },
+  created() {
+    console.log(this.typeString)
   },
   methods: {
     handleRemove(file, fileList) {

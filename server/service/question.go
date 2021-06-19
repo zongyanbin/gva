@@ -93,7 +93,7 @@ func GetQuestionInfoList(info request.QuestionSearch) (err error, list interface
 	}
 	//db = db.Where("`exam_paper_id` = ?",1)
 	err = db.Count(&total).Error
-	err = db.Limit(limit).Offset(offset).Find(&questions).Error
+	err = db.Limit(limit).Offset(offset).Order("sort ASC").Order("ID DESC").Find(&questions).Error
 	return err, questions, total
 }
 

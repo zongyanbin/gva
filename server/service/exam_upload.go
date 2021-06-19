@@ -71,7 +71,7 @@ func ExamGetFileRecordInfoList(info request.PageInfo) (err error, list interface
 //@param: header *multipart.FileHeader, noSave string
 //@return: err error, file model.Attachment
 
-func ExamUploadFile(header *multipart.FileHeader, noSave string) (err error, file model.Attachment) {
+func ExamUploadFile(header *multipart.FileHeader, noSave string, typeString string) (err error, file model.Attachment) {
 	oss := upload.NewOss()
 	filePath, key, uploadErr := oss.UploadFile(header)
 	if uploadErr != nil {
@@ -84,6 +84,7 @@ func ExamUploadFile(header *multipart.FileHeader, noSave string) (err error, fil
 			Name: header.Filename,
 			Exts:  s[len(s)-1],
 			Key:  key,
+			Type: typeString,
 		}
 		return ExamUpload(&f), f
 	}

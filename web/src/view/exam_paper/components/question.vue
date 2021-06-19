@@ -1,5 +1,5 @@
-<template xmlns="http://www.w3.org/1999/html">
-  <ElRow class="question-wrapper">
+<template xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <ElRow class="question-wrapper inputDeep">
 
     <el-col :span="24" class="question-list">
       <p v-if="tableChildData.length == 0" style="margin: 10px 0">一点东西都没有，赶快点击上方按钮添加题目吧！</p>
@@ -18,9 +18,9 @@
           <div class="question-options">
             <!--三文本框-->
             <div v-if="question.topic_id ==='2'" >
-              <el-input v-model="question.dydhcs" placeholder="党员大会次数" ></el-input>
-              <el-input v-model="question.dyxzhcs" placeholder="党员小组会次数" ></el-input>
-              <el-input v-model="question.sdkcs" placeholder="上党课次数" ></el-input>
+              <el-input v-model="question.dydhcs" placeholder="党员大会次数"  oninput = "value=value.replace(/[^\d]/g,'')"></el-input>
+              <el-input v-model="question.dyxzhcs" placeholder="党员小组会次数"  oninput = "value=value.replace(/[^\d]/g,'')"></el-input>
+              <el-input v-model="question.sdkcs" placeholder="上党课次数"  oninput = "value=value.replace(/[^\d]/g,'')"></el-input>
 
 <!--              <div class="option-item" v-for="(option, index) in addCheckbox_form.options">-->
 <!--                <el-row>-->
@@ -43,22 +43,56 @@
 <!--                  原始数据{{question}}-->
 <!--                  </br>-->
 <!--                        {{idImgArr}}-->
-              <el-input v-model="question.selectContent" placeholder="请输入..." ></el-input>
-              <Upload @extend_data="getChildData"></Upload>
+
+
+            <el-input v-model="question.selectContent" placeholder="请输入..."  oninput = "value=value.replace(/[^\d]/g,'')"></el-input>
+            <Upload @extend_data="getChildData"  typeString="本单位级">1</Upload>
             </div>
 
             <!--三个文本框加时间-->
             <div v-if="question.topic_id ==='5'">
-            <el-input v-model="question.selectContent" placeholder="请输入..." ></el-input>
+            <el-input v-model="question.selectContent" placeholder="请输入..." oninput = "value=value.replace(/[^\d]/g,'')" ></el-input>
               <Textmore></Textmore>
             </div>
                 <!--判断多选-->
 
             <!--判断文本-->
             <div v-if="question.topic_id ==='1'">
-                <el-input v-model="question.selectContent" placeholder="请输入..." ></el-input>
+                <el-input v-model="question.selectContent" placeholder="请输入..." oninput = "value=value.replace(/[^\d]/g,'')"></el-input>
             </div>
             <!--判断图片-->
+
+            <!--五图-->
+            <div v-if="question.topic_id=='6'">
+              <el-input v-model="question.selectContent" placeholder="请输入..."  oninput = "value=value.replace(/[^\d]/g,'')"></el-input>
+              <span>本单位级</span>
+              <Upload @extend_data="getChildData"  typeString="本单位级"></Upload>
+              <span>公司级</span>
+              <Upload @extend_data="getChildData"  typeString="公司级"></Upload>
+              <span>集团级</span>
+              <Upload @extend_data="getChildData"  typeString="集团级"></Upload>
+              <span>市级</span>
+              <Upload @extend_data="getChildData"  typeString="市级"></Upload>
+              <span>国家级</span>
+              <Upload @extend_data="getChildData"  typeString="国家级"></Upload>
+            </div>
+
+            <div v-if="question.topic_id=='7'">
+              <span>证书图片</span>
+              <Upload @extend_data="getChildData" typeString="证书图片"></Upload>
+            </div>
+
+            <!--内容加日期-->
+            <div v-if="question.topic_id=='8'">
+              <el-input v-model="question.selectContent" placeholder="请输入..."  oninput = "value=value.replace(/[^\d]/g,'')"></el-input>
+              <Textdate></Textdate>
+            </div>
+
+            <!--下拉菜单-->
+            <div v-if="question.topic_id=='9'">
+              <el-input v-model="question.selectContent" placeholder="请输入..." oninput = "value=value.replace(/[^\d]/g,'')"></el-input>
+            </div>
+
           </div>
         </el-col>
        </ElRow>
@@ -75,10 +109,12 @@
 import globalBus from '@/utils/global-bus'
 import Upload from './upload.vue'
 import Textmore from './textmore.vue'
+import Textdate from './textdate.vue'
 export default {
   components: {
     Upload,
-    Textmore
+    Textmore,
+    Textdate,
   },
   props:['tableChildData'],
   data() {
@@ -213,6 +249,7 @@ export default {
 
     // 自己修改
     getChildData(value){
+
       this.question.imgurl = value
 
       //let arr=[]
@@ -244,9 +281,6 @@ export default {
         console.log('extend_textmore', data)
         this.question.info = data
       })
-
-
-
     },
 
     // 父类调用我
@@ -258,10 +292,15 @@ export default {
         if(item.topic_id ==='5'){
           this.$set(item,'infoContent', JSON.stringify(this.question.info))
         }
+        if(item.topic_id ==='8'){
+          this.$set(item,'infoContent', JSON.stringify(this.question.info))
+        }
+        if(item.topic_id ==='7'){
+          this.$set(item,'infoContent', JSON.stringify(this.question.info))
+        }
       })
-
     },
-    //接受子组件数据
+    //sse
   },
 }
 
@@ -336,8 +375,22 @@ export default {
   color: #018fe5;
 }
 
+
 .option-item:hover .option-action {
   display: inline-block;
   cursor: pointer;
+}
+.option-item:hover .option-action {
+  display: inline-block;
+  cursor: pointer;
+}
+.  /* 利用穿透，设置input边框隐藏 */
+.inputDeep>>>.el-input__inner {
+  border: 0;
+}
+/* 如果你的 el-input type 设置成textarea ，就要用这个了 */
+.inputDeep>>>.el-textarea__inner {
+  border: 0;
+  resize: none;/* 这个是去掉 textarea 下面拉伸的那个标志，如下图 */
 }
 </style>

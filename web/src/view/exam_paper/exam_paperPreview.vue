@@ -150,6 +150,38 @@ export default {
       console.log(this.tableData.Question)
       console.log("=======shang==========")
       this.tableData.Question.forEach((Question,index)=>{
+
+        if((Question.topic_id ==="9")){ // 1 一个文本框 2 不要in
+
+          const score = parseFloat(Question.selectContent)
+          console.log("一个文本框Question",Question)
+          const curQues = {
+            //user_id :user_id,
+            paper_id :Question.exam_paper_id,
+            question_id :Question.ID,
+            answer_content :!Question.infoContent ? Question.selectContent:Question.selectContent ,
+            score :score,
+          }
+          result.push(curQues)
+          console.log("动态文本 curQues:"+JSON.stringify(curQues))
+        }
+
+        if((Question.topic_id ==="8")){ // 1 一个文本框 2.
+
+          const score = parseFloat(Question.selectContent)
+          console.log("一个文本框Question",Question)
+          const curQues = {
+            //user_id :user_id,
+            paper_id :Question.exam_paper_id,
+            question_id :Question.ID,
+            answer_content :Question.infoContent,
+            score :score,
+          }
+          result.push(curQues)
+          console.log("动态文本 curQues:"+JSON.stringify(curQues))
+        }
+
+
         if((Question.topic_id ==="5")){ // 1 一个文本框 2.
 
           const score = parseFloat(Question.selectContent)
@@ -253,17 +285,21 @@ export default {
           }
           result.push(curQues)
           console.log("多选 curQues:"+curQues)
-        }else{
-          const curQues = {
-            // user_id :user_id,
-            // paper_id :paper_id,
-            // question_id :question_id,
-            // answer_content :answer_content,
-            // score :score,
-          }
-          result.push(curQues)
-          console.log("else curQues:"+curQues)
         }
+        // else{
+        //   const score = parseFloat(Question.selectContent)
+        //   console.log("一个文本框Question",Question)
+        //   const curQues = {
+        //     //user_id :user_id,
+        //     paper_id :Question.exam_paper_id,
+        //     question_id :Question.ID,
+        //     answer_content :Question.selectContent,
+        //     score :score,
+        //   }
+        //   result.push(curQues)
+        //   console.log("一个文本框default curQues:"+JSON.stringify(curQues))
+        //
+        // }
          console.log(Question,index)
       })
       console.log("all_data:",result)

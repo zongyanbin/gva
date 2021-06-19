@@ -16,16 +16,25 @@
         <el-form-item
             label="时间"
             :prop="'list.' + index + '.fieldTime'"
-            :rules="[{ required: true, message: '时间不能为空',trigger: 'change'}]"
+            :rules="[{ required: true, message: '时间不能为空'}]"
         >
+
           <el-date-picker
               v-model="item.fieldTime"
-              type="daterange"
-              start-placeholder="开始日期"
-              end-placeholder="结束日期"
+              type="datetime"
+              placeholder="选择日期时间"
               value-format="yyyy-MM-dd"
-              :default-time="['00:00:00', '23:59:59']"
-          ></el-date-picker>
+          >
+          </el-date-picker>
+
+<!--        :default-time="['00:00:00', '23:59:59']"      <el-date-picker-->
+<!--              v-model="item.fieldTime"-->
+<!--              type="daterange"-->
+<!--              start-placeholder="开始日期"-->
+<!--              end-placeholder="结束日期"-->
+<!--              value-format="yyyy-MM-dd"-->
+<!--              :default-time="['00:00:00', '23:59:59']"-->
+<!--          ></el-date-picker>-->
         </el-form-item>
 
         <el-button
@@ -37,6 +46,7 @@
       </el-row>
       <el-row>
         <el-button type="primary" size="medium" @click="addRow">新增属性</el-button>
+<!--        <el-button type="primary" size="medium" @click="submit('ruleForm')">提交</el-button>-->
       </el-row>
     </el-form>
   </div>
