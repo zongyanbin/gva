@@ -1,75 +1,24 @@
 
 <div align=center>
-<img src="http://qmplusimg.henrongyi.top/gvalogo.jpg" width=300" height="300" />
 </div>
-<div align=center>
-<img src="https://img.shields.io/badge/golang-1.12-blue"/>
-<img src="https://img.shields.io/badge/gin-1.4.0-lightBlue"/>
-<img src="https://img.shields.io/badge/vue-2.6.10-brightgreen"/>
-<img src="https://img.shields.io/badge/element--ui-2.12.0-green"/>
-<img src="https://img.shields.io/badge/gorm-1.9.12-red"/>
-</div>
+
 
 [English](./README-en.md) | 简体中文
 
-[gitee地址:https://gitee.com/pixelmax/gin-vue-admin](https://gitee.com/pixelmax/gin-vue-admin)
 
-[github地址:https://github.com/flipped-aurora/gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin)
 
-[vue3版本分支地址:https://github.com/flipped-aurora/gin-vue-admin/tree/vue3Develop](https://github.com/flipped-aurora/gin-vue-admin/tree/vue3Develop)
-
-[审批流分支:https://github.com/flipped-aurora/gin-vue-admin/tree/gva_workflow](https://github.com/flipped-aurora/gin-vue-admin/tree/gva_workflow)
-
-# 项目文档
-[在线文档](https://www.gin-vue-admin.com/) : https://www.gin-vue-admin.com/
-
-[从环境到部署教学视频](https://www.bilibili.com/video/BV1fV411y7dT)
-
-[开发教学](https://www.gin-vue-admin.com/docs/help) (贡献者:  <a href="https://github.com/LLemonGreen">LLemonGreen</a> And <a href="https://github.com/fkk0509">Fann</a>)
-- 前端UI框架：[element-ui](https://github.com/ElemeFE/element) 
-- 后台框架：[gin](https://github.com/gin-gonic/gin) 
 
 ## 1. 基本介绍
 
 ### 1.1 项目介绍
 
-[在线预览](http://demo.gin-vue-admin.com/)
 
 测试用户名：admin
 
 测试密码：123456
 
-> Gin-vue-admin是一个基于vue和gin开发的全栈前后端分离的后台管理系统，集成jwt鉴权，动态路由，动态菜单，casbin鉴权，表单生成器，代码生成器等功能，提供多种示例文件，让您把更多时间专注在业务开发上。
+> 基于vue和gin开发的全栈前后端分离的后台管理系统，集成jwt鉴权，动态路由，动态菜单，casbin鉴权，表单生成器，代码生成器等功能，提供多种示例文件，让您把更多时间专注在业务开发上。
 
-### 1.2 贡献指南
-Hi! 首先感谢你使用 gin-vue-admin。
-
-Gin-vue-admin 是一套为后台管理平台准备的一整套前后端分离架构式的开源框架，旨在快速搭建后台管理系统。
-
-Gin-vue-admin 的成长离不开大家的支持，如果你愿意为 gin-vue-admin 贡献代码或提供建议，请阅读以下内容。
-
-#### 1.2.1 Issue 规范
-- issue 仅用于提交 Bug 或 Feature 以及设计相关的内容，其它内容可能会被直接关闭。如果你在使用时产生了疑问，请到 Slack 或 [Gitter](https://gitter.im/ElemeFE/element) 里咨询。
-
-- 在提交 issue 之前，请搜索相关内容是否已被提出。
-
-#### 1.2.2 Pull Request 规范
-- 请先 fork 一份到自己的项目下，不要直接在仓库下建分支。
-
-- commit 信息要以`[文件名]: 描述信息` 的形式填写，例如 `README.md: fix xxx bug`。
-
-- <font color=red>确保 PR 是提交到 `develop` 分支，而不是 `master` 分支。</font>
-
-- 如果是修复 bug，请在 PR 中给出描述信息。
-
-- 合并代码需要两名维护人员参与：一人进行 review 后 approve，另一人再次 review，通过后即可合并。
-
-### 1.3 版本列表
-
-- master: 2.0, 用于生产环境
-- develop: 2.0, 用于测试环境
-- [gin-vue-admin_v2_dev](https://github.com/flipped-aurora/gin-vue-admin/tree/gin-vue-admin_v2_dev) (v2.0 [GormV1版本](https://v1.gorm.io)稳定分支)
-- [gva_gormv2_dev](https://github.com/flipped-aurora/gin-vue-admin/tree/gva_gormv2_dev) (v2.0 [GormV2版本](https://v2.gorm.io)开发分支)
 
 ## 2. 使用说明
 
@@ -268,7 +217,7 @@ swag init
 
 ![系统架构图](http://qmplusimg.henrongyi.top/gva/gin-vue-admin.png)
 
-### 4.2 前端详细设计图 （提供者:<a href="https://github.com/baobeisuper">baobeisuper</a>）
+### 4.2 前端详细设计图 
 
 ![前端详细设计图](http://qmplusimg.henrongyi.top/naotu.png)
 
@@ -332,47 +281,3 @@ swag init
 
 ## 7. 知识库 
 ## 7.1 团队博客
-
-> https://www.yuque.com/flipped-aurora
->
->内有前端框架教学视频。如果觉得项目对您有所帮助可以添加我的个人微信:shouzi_1994，欢迎您提出宝贵的需求。
-
-## 7.2 教学视频
-
-（1）环境搭建
-> Bilibili：https://www.bilibili.com/video/BV1Fg4y187Bw/ (v1.0版本视频，v2.0操作相同目录不同)
-
-（2）模板使用
-> Bilibili：https://www.bilibili.com/video/BV16K4y1r7BD/ (v1.0版本视频，v2.0操作相同目录不同)
-
-（3）2.0目录以及开发体验
-> Bilibili：https://www.bilibili.com/video/BV1aV411d7Gm#reply2831798461
-
-（4）golang基础教学视频录制中...
-> https://space.bilibili.com/322210472/channel/detail?cid=108884
-
-## 8. 联系方式
-
-### 8.1 技术群
-
-### QQ交流群：622360840
-| QQ 群 |
-|  :---:  |
-| <img src="http://qmplusimg.henrongyi.top/qq.jpg" width="180"/> |
-
-### 微信交流群
-| 微信 |
-|  :---:  | 
-| <img width="150" src="http://qmplusimg.henrongyi.top/qrjjz.png"> 
-
-添加微信，备注"加入gin-vue-admin交流群"
-
-### [关于我们](https://www.gin-vue-admin.com/about/)
-
-## 9. 捐赠
-
-如果你觉得这个项目对你有帮助，你可以请作者喝饮料 :tropical_drink: [点我](https://www.gin-vue-admin.com/docs/coffee)
-
-## 10. 商用注意事项
-
-如果您将此项目用于商业用途，请遵守Apache2.0协议并保留作者技术支持声明。

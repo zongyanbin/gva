@@ -49,11 +49,12 @@
 </template>
 <script>
 import {
+  createAnswer_question_front
+} from "@/api/answer_question";  //  此处请自行替换地址
+import {
   findExam_paperQuestion,
 } from "@/api/exam_paper";  //  此处请自行替换地址
-// import {
-//   createuser_paper_answer,
-// } from "@/api/user_paper_answer";
+
 import ParperQuestion from './components/question.vue'
 export default {
   components: {
@@ -144,7 +145,7 @@ export default {
     submitQuestion(){
       // 我去调用子组件
       this.$refs.mylistquestion.childQustion()
-
+      this.user_id = 1
       //const Id = ''
       const result = []
       console.log(this.tableData.Question)
@@ -156,7 +157,7 @@ export default {
           const score = parseFloat(Question.selectContent)
           console.log("一个文本框Question",Question)
           const curQues = {
-            //user_id :user_id,
+            user_id :this.user_id,
             paper_id :Question.exam_paper_id,
             question_id :Question.ID,
             answer_content :!Question.infoContent ? Question.selectContent:Question.selectContent ,
@@ -171,7 +172,7 @@ export default {
           const score = parseFloat(Question.selectContent)
           console.log("一个文本框Question",Question)
           const curQues = {
-            //user_id :user_id,
+            user_id :this.user_id,
             paper_id :Question.exam_paper_id,
             question_id :Question.ID,
             answer_content :Question.infoContent,
@@ -187,7 +188,7 @@ export default {
           const score = parseFloat(Question.selectContent)
           console.log("一个文本框Question",Question)
           const curQues = {
-            //user_id :user_id,
+            user_id :this.user_id,
             paper_id :Question.exam_paper_id,
             question_id :Question.ID,
             answer_content :Question.infoContent,
@@ -202,7 +203,7 @@ export default {
           const score = parseFloat(Question.selectContent)
           console.log("一个文本框Question",Question)
           const curQues = {
-            //user_id :user_id,
+            user_id :this.user_id,
             paper_id :Question.exam_paper_id,
             question_id :Question.ID,
             answer_content :Question.imgurl,
@@ -215,7 +216,7 @@ export default {
           const score = parseFloat(Question.selectContent)
           console.log("一个文本框Question",Question)
           const curQues = {
-            //user_id :user_id,
+            user_id :this.user_id,
             paper_id :Question.exam_paper_id,
             question_id :Question.ID,
             answer_content :Question.selectContent,
@@ -255,7 +256,7 @@ export default {
           console.log("score"+score,json_inputContent)
 
           const curQues = {
-            // user_id :user_id,
+               user_id :this.user_id,
                paper_id :Question.exam_paper_id,
                question_id :Question.ID,
                answer_content :Question.data,
@@ -303,25 +304,31 @@ export default {
          console.log(Question,index)
       })
       console.log("all_data:",result)
-      // 防止重复提交
-      // this.finished = true
-      // const res = createuser_paper_answer(this.formData);
-      // if (res.code == 0) {
-      //   this.$message({
-      //     type:"success",
-      //     message:"创建"
-      //   })
-      //   this.closeDialog();
-      //   this.getTableData();
-      // }
+      console.log('======begin result======')
+      var str = JSON.stringify(result)
+      console.log('======end result======')
+      console.log(str)
 
-    }
+      //防止重复提交
+      //this.finished = true
+      this.enterDialog(result)
+    },
+    // 創建文件
+    async enterDialog(result) {
+      let res = await createAnswer_question_front(result);
+      if (res.code == 0) {
+        this.$message({
+          type:"success",
+          message:"试卷提交成功！"
+        })
+        this.closeDialog();
+      }
+    },
   }
 }
 
 </script>
 <style scoped>
-
 .view-layout {
   background-color: rgb(237, 240, 248);
   min-height: 100%;
@@ -383,6 +390,4 @@ export default {
   width: 100%;
   padding: 30px 30px 0 30px;
 }
-</style>
-<style>
 </style>

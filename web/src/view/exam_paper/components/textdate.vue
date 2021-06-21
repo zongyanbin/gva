@@ -27,14 +27,6 @@
           >
           </el-date-picker>
 
-<!--        :default-time="['00:00:00', '23:59:59']"      <el-date-picker-->
-<!--              v-model="item.fieldTime"-->
-<!--              type="daterange"-->
-<!--              start-placeholder="开始日期"-->
-<!--              end-placeholder="结束日期"-->
-<!--              value-format="yyyy-MM-dd"-->
-<!--              :default-time="['00:00:00', '23:59:59']"-->
-<!--          ></el-date-picker>-->
         </el-form-item>
 
         <el-button
@@ -90,8 +82,8 @@ export default {
     },
     submitinfo(formName) {
       this.$refs[formName].validate(valid => {
-        globalBus.$emit("extend_textmore",this.ruleForm)
-        console.log(this.ruleForm);
+        globalBus.$emit("extend_textdate",this.ruleForm)
+        console.log("extend_textdate_2text",this.ruleForm);
         if (valid) {
           alert("submit!");
         } else {

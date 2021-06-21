@@ -54,7 +54,7 @@
             <el-input v-model="question.selectContent" placeholder="请输入..." oninput = "value=value.replace(/[^\d]/g,'')" ></el-input>
               <Textmore></Textmore>
             </div>
-                <!--判断多选-->
+             <!--判断多选-->
 
             <!--判断文本-->
             <div v-if="question.topic_id ==='1'">
@@ -122,6 +122,8 @@ export default {
       question:{
         imgurl:'',
         info:'',
+        info2:'',
+
       },
       idImgArr:[],
       infoArr:[],
@@ -148,25 +150,6 @@ export default {
   },
   mounted() {},
   methods: {
-    // submitForm1() {
-    //   this.$refs['elForm'].validate(valid => {
-    //     if (!valid) return
-    //     // TODO 提交表单
-    //   })
-    // },
-    //提交事件
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          console.log('提交',this.environmentForm);
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
-    },
-
     // 新建题目
     addRadio () {
       this.addRadio_modal = true
@@ -281,6 +264,11 @@ export default {
         console.log('extend_textmore', data)
         this.question.info = data
       })
+
+      globalBus.$on('extend_textdate', (data) => {
+        console.log('extend_textdate', data)
+        this.question.info2=data
+      })
     },
 
     // 父类调用我
@@ -293,8 +281,10 @@ export default {
           this.$set(item,'infoContent', JSON.stringify(this.question.info))
         }
         if(item.topic_id ==='8'){
-          this.$set(item,'infoContent', JSON.stringify(this.question.info))
+          console.log("topic8",this.question.info2)
+          this.$set(item,'infoContent',JSON.stringify(this.question.info2))
         }
+
         if(item.topic_id ==='7'){
           this.$set(item,'infoContent', JSON.stringify(this.question.info))
         }

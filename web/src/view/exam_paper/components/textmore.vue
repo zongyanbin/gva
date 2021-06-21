@@ -47,7 +47,6 @@ import globalBus from '@/utils/global-bus'
 export default {
   data() {
     return {
-
       ruleForm: {
         list: [
           {
@@ -56,7 +55,6 @@ export default {
           }
         ]
       },
-
     };
   },
   mounted () {

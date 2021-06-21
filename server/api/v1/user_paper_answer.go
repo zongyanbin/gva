@@ -19,7 +19,7 @@ import (
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
 // @Router /User_paper_answer/createUser_paper_answer [post]
 func CreateUser_paper_answer(c *gin.Context) {
-	var User_paper_answer model.User_paper_answer
+	var User_paper_answer[] model.User_paper_answer
 	_ = c.ShouldBindJSON(&User_paper_answer)
 	if err := service.CreateUser_paper_answer(User_paper_answer); err != nil {
         global.GVA_LOG.Error("创建失败!", zap.Any("err", err))

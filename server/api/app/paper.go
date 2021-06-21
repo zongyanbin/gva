@@ -87,6 +87,27 @@ func GetPaperListTEST(c *gin.Context)  {
 
 }
 
+// @Tags User_paper_answer
+// @Summary 创建User_paper_answer
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data body model.User_paper_answer true "创建User_paper_answer"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /User_paper_answer/createUser_paper_answer [post]
+func CreateUser_paper_answer(c *gin.Context) {
+	var User_paper_answer[] model.User_paper_answer
+	_ = c.ShouldBindJSON(&User_paper_answer)
+
+	fmt.Println("User_paper_answer",User_paper_answer)
+	if err := service.CreateUser_paper_answer(User_paper_answer); err != nil {
+		global.GVA_LOG.Error("创建失败!", zap.Any("err", err))
+		response.FailWithMessage("创建失败", c)
+	} else {
+		response.OkWithMessage("创建成功", c)
+	}
+}
+
 func GetQuestList1(c *gin.Context)  {
 	// prelad里面不是对应的表名字,而只主表中字段名字
 	// join 一定要select,其它不用select的话默认查询全部

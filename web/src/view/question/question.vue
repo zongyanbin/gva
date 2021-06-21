@@ -163,14 +163,11 @@
     </el-dialog>
   </div>
 </template>
-
 <script>
 const path = process.env.VUE_APP_BASE_API;
 import { mapGetters } from 'vuex';
 
 import { wenTiExportExcel, loadExcelData, downloadTemplate } from "@/api/excel";
-
-
 
 import {
     createQuestion,

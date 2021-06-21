@@ -82,7 +82,6 @@ export const createuser_paper_answer = (data) => {
      })
  }
 
-
 // @Tags user_paper_answer
 // @Summary 分页获取user_paper_answer列表
 // @Security ApiKeyAuth
@@ -93,7 +92,7 @@ export const createuser_paper_answer = (data) => {
 // @Router /user_paper_answer/getuser_paper_answerList [get]
  export const getuser_paper_answerList = (params) => {
      return service({
-         url: "/user_paper_answer/getuUer_paper_answerList",
+         url: "/user_paper_answer/getUser_paper_answerList",
          method: 'get',
          params
      })

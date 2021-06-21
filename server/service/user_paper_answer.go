@@ -12,7 +12,7 @@ import (
 //@param: User_paper_answer model.User_paper_answer
 //@return: err error
 
-func CreateUser_paper_answer(user_paper_answer model.User_paper_answer) (err error) {
+func CreateUser_paper_answer(user_paper_answer[] model.User_paper_answer) (err error) {
 	global.GVA_DB.AutoMigrate(&user_paper_answer)
 	err = global.GVA_DB.Create(&user_paper_answer).Error
 	return err

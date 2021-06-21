@@ -16,7 +16,6 @@ export const createAnswer_question = (data) => {
      })
  }
 
-
 // @Tags Answer_question
 // @Summary 删除Answer_question
 // @Security ApiKeyAuth
@@ -82,7 +81,6 @@ export const createAnswer_question = (data) => {
      })
  }
 
-
 // @Tags Answer_question
 // @Summary 分页获取Answer_question列表
 // @Security ApiKeyAuth
@@ -98,3 +96,20 @@ export const createAnswer_question = (data) => {
          params
      })
  }
+
+// @Tags Answer_question
+// @Summary 创建Answer_question
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data body model.Answer_question true "创建Answer_question"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router/paper_answer/createUser_paper_answer [post]
+export const createAnswer_question_front = (data) => {
+    console.log(data)
+    return service({
+        url: "/answer_question/createAnswer_question_front",
+        method: 'post',
+        data
+    })
+}
