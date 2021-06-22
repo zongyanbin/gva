@@ -30,7 +30,7 @@
 - 替换掉项目中的七牛云公钥，私钥，仓名和默认url地址，以免发生测试文件数据错乱
 ```
 
-> 使用docker-compose体验本项目
+> 使用docker-compose体验
 - 安装 docker-compose [官方文档](https://docs.docker.com/compose/install/)
     - ```shell script
        # 在Linux安装

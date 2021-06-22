@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"fmt"
 	"gin-vue-admin/global"
     "gin-vue-admin/model"
     "gin-vue-admin/model/request"
@@ -114,6 +115,7 @@ func FindUser_paper_answer(c *gin.Context) {
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
 // @Router /User_paper_answer/getUser_paper_answerList [get]
 func GetUser_paper_answerList(c *gin.Context) {
+	fmt.Println("123")
 	var pageInfo request.User_paper_answerSearch
 	_ = c.ShouldBindQuery(&pageInfo)
 	if err, list, total := service.GetUser_paper_answerInfoList(pageInfo); err != nil {

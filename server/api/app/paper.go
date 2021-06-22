@@ -14,6 +14,14 @@ type Request_paper struct {
 	Paper_id int `form:"paperid"`
 }
 
+// @Tags GetPaperList
+// @Summary GetPaperList
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data body Request_paper false "试卷ID"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /paper/GetPaperList [GET]
 // 获取试卷信息
 func GetPaperList(c *gin.Context){
 	var requestPaper Request_paper

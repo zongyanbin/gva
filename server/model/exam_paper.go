@@ -21,7 +21,7 @@ type Exam_paper struct {
 
 // 自定义结构体
 type Request_paper_params struct {
-      Exam_paper_id int `form:"exam_paper_id"`
+      Exam_paper_id int `form:"exam_paper_id" json:"exam_paper_id"`
 }
 func (Exam_paper) TableName() string {
   return "exam_paper"

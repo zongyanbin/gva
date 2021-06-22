@@ -7,7 +7,7 @@ import (
 )
 
 func InitUser_paper_answerRouter(Router *gin.RouterGroup) {
-	User_paper_answerRouter := Router.Group("User_paper_answer").Use(middleware.OperationRecord())
+	User_paper_answerRouter := Router.Group("user_paper_answer").Use(middleware.OperationRecord())
 	{
 		User_paper_answerRouter.POST("createUser_paper_answer", v1.CreateUser_paper_answer)   // 新建User_paper_answer
 		User_paper_answerRouter.DELETE("deleteUser_paper_answer", v1.DeleteUser_paper_answer) // 删除User_paper_answer
