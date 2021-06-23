@@ -11,7 +11,7 @@ import (
 )
 
 // @Tags ExaFileUploadAndDownload
-// @Summary 上传文件示例
+// @Summary 上传文件示例 app
 // @Security ApiKeyAuth
 // @accept multipart/form-data
 // @Produce  application/json
