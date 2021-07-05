@@ -27,5 +27,11 @@ func InitAppRouter(r *gin.RouterGroup) {
 		Web_user_paper_answerRouter.POST("createAnswer_question_front", app.CreateUser_paper_answer)
 	}
 
+	// 微信登录
+	WeChat := r.Group("wechat")
+	{
+		WeChat.GET("applet_login",app.AppletWeChatLogin)
+	}
+
 }
 
