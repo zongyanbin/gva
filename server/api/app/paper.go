@@ -11,7 +11,6 @@ import (
 	"gin-vue-admin/model"
 	"gin-vue-admin/model/response"
 	"gin-vue-admin/service"
-	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"net/http"
@@ -157,7 +156,6 @@ func  WXLogin(code string) (*response.WXloginResp,error) {
 	// 解析http请求中body 数据到我们定义的结构体中
 	wxResp := response.WXloginResp{}
 	decoder := json.NewDecoder(resp.Body)
-	fmt.Println("decoder:",decoder)
 
 	if err := decoder.Decode(&wxResp); err != nil {
 		return nil, err
@@ -177,6 +175,7 @@ func  WXLogin(code string) (*response.WXloginResp,error) {
 
 func AppletWeChatLogin( c *gin.Context) {
 	code := c.Query("code")	// 获取code
+	fmt.Println(code)
 	// 根据code获取 openID和session_key
 	wxLoginResp, err :=  WXLogin(code)
 	if err != nil {
@@ -184,18 +183,23 @@ func AppletWeChatLogin( c *gin.Context) {
 		//c.JSON(400, util.Fail(err.Error()))
 		return
 	}
-
-	// 初始化session对象 保存登录状态
-	sessions := sessions.Default(c)
-	sessions.Set("openid", wxLoginResp.OpenId)
-	sessions.Set("sessionKey", wxLoginResp.SessionKey)
+	//
+	// 初始化session对象 保存登录状态 	fmt.Println(wxLoginResp.SessionKey)  // openid oGFuX5IekCB64Z3i74HS2uJYjBWA session id
+	//sessions := sessions.Default(c)
+	//sessions.Set("openid", wxLoginResp.OpenId)
+	//sessions.Set("sessionKey", wxLoginResp.SessionKey)
+	//sessions.Save()
 
 	// 这里用openid和sessionkey的串接 进行MD5之后作为该用户的自定义登录状态
-	mySession := GetMD5Encode(wxLoginResp.OpenId + wxLoginResp.SessionKey)
-
-	// 接下来可以将openid和sessionkey, mySession 存储到数据库中
-	// 但这里要保证 mySession 唯一， 以便用mySession去索引openid 和 sessionkey
-	c.String(200, mySession)
+	//mySession := GetMD5Encode(wxLoginResp.OpenId + wxLoginResp.SessionKey)
+	//
+	//// 接下来可以将openid和sessionkey, mySession 存储到数据库中
+	//// 但这里要保证 mySession 唯一， 以便用mySession去索引openid 和 sessionkey
+	//c.String(200, wxLoginResp)
+	c.JSON(200,gin.H{
+		"msg":"baocuo",
+		"data":wxLoginResp,
+	})
 
 }
 
