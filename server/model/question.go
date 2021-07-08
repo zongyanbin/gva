@@ -17,8 +17,8 @@ type Question struct {
 	Author           string `json:"author" form:"author" gorm:"column:author;comment:发题人;type:varchar(191);size:191;"`
 	Hidden        bool      `json:"hidden" form:"hidden" gorm:"column:hidden;comment:是否在列表隐藏"`     // 是否在列表隐藏
 	Sort          int       `json:"sort" form:"sort" gorm:"column:sort;comment排序标记"`          // 排序标记
-	Question_options []Question_options `gorm:"foreignKey:Question_id;references:ID"`
-	Answer_question  []Answer_question  `gorm:"foreignkey:Question_id;references:ID"`
+	Question_options 	[]Question_options `gorm:"foreignKey:Question_id;references:ID"`
+	User_paper_answer  	[]User_paper_answer	`gorm:"foreignKey:Question_id;references:ID"`
 }
 // 自定义结构体测试查询数据
 type Question_res struct {

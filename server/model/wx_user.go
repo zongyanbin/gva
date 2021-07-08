@@ -17,6 +17,8 @@ type Wx_user struct {
       City  string `json:"city" form:"city" gorm:"column:city;comment:城市;type:varchar(100);size:100;"`
       Language  string `json:"language" form:"language" gorm:"column:language;comment:语言;type:varchar(100);size:100;"`
       Mobile  string `json:"mobile" form:"mobile" gorm:"column:mobile;comment:手机号码;type:varchar(50);size:50;"`
+      SessionKey  string `json:"sessionKey" form:"sessionKey" gorm:"column:session_key;comment:sessionKey;type:varchar(40);size:40;"`
+      MySession  string `json:"mySession" form:"mySession" gorm:"column:my_session;comment:mySession;type:varchar(40);size:40;"`
 }
 
 func (Wx_user) TableName() string {

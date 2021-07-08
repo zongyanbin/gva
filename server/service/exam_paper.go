@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"gin-vue-admin/global"
 	"gin-vue-admin/model"
 	"gin-vue-admin/model/request"
@@ -92,5 +93,35 @@ func GetQuestList(id int)(err error, paper model.Exam_paper) {
 	err =global.GVA_DB.Preload("Question", func(db *gorm.DB) *gorm.DB {
 		return db.Order("Question.Sort ASC")  // question.sort 问题排序预加载
 	}).Preload("Question.Question_options").Where("id", id).Limit(10).Find(&paper).Error
+	return
+}
+
+
+//@function: GetQuqestAnswerList
+//@description: 根据试卷ID User_id
+//@param: id uint
+//@return: err error, exam_paper model.Exam_paper
+
+// id 试卷id  用户openid
+func GetQuqestAnswerList(id int, user_id string)(err error, paper model.Exam_paper) {
+	err =global.GVA_DB.Preload("Question", func(db *gorm.DB) *gorm.DB {
+		return db.Order("Question.Sort ASC")  // question.sort 问题排序预加载
+	}).
+		Preload("Question.Question_options").Where("id = ?", id).
+		Preload("Question.User_paper_answer").Where("id = ?",id).
+		Preload("Question.User_paper_answer", "user_id = ?",user_id).
+		Limit(10).Find(&paper).Error
+	return
+}
+
+// id 试卷id  用户openid
+func GetQuqestAnswerListAll()(error error,user_paper_answer[] model.User_paper_answer){
+	result := global.GVA_DB.Debug().Model(&model.User_paper_answer{}).Select("paper_id,user_id, sum(score) as score").Group("paper_id,user_id").Find(&user_paper_answer)
+	fmt.Println(result)
+	return
+}
+
+func GetExam_paper1(id uint) (err error, exam_paper model.Exam_paper) {
+	err = global.GVA_DB.Where("id = ?", id).First(&exam_paper).Error
 	return
 }

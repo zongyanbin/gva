@@ -12,14 +12,17 @@ import (
 	"gin-vue-admin/model/res"
 	"gin-vue-admin/model/response"
 	"gin-vue-admin/service"
-	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"net/http"
+
+	// 导入session包
+	"github.com/gin-contrib/sessions"
 )
 
 type Request_paper struct {
 	Paper_id int `form:"paperid"`
+	User_id string `form:"userid"`
 }
 
 // @Tags GetPaperList
@@ -174,7 +177,6 @@ func  WXLogin(code string) (*response.WXloginResp,error) {
 
 // wechat/applet_login ?code=xxx [get] 路由
 // 微信小程序登录
-
 func AppletWeChatLogin( c *gin.Context) {
 	code := c.Query("code")	// 获取code
 	fmt.Println(code)
@@ -184,30 +186,50 @@ func AppletWeChatLogin( c *gin.Context) {
 		res.SendResponse(c, nil, err.Error())
 		return
 	}
-	// 初始化session对象 保存登录状态 	fmt.Println(wxLoginResp.SessionKey)  // openid oGFuX5IekCB64Z3i74HS2uJYjBWA session id
-
+	// 初始化session对象 fmt.Println(wxLoginResp.SessionKey)  // openid oGFuX5IekCB64Z3i74HS2uJYjBWA session id
 	session := sessions.Default(c)
+	fmt.Println("session",session)
 	session.Set("openid", wxLoginResp.OpenId)
 	session.Set("sessionKey", wxLoginResp.SessionKey)
 	session.Save()
 
-	//	$tore := sessions.NewSession()
-	//var store = sessions.NewCookieStore([]byte("secret"))
-
 	// 这里可以用openid和sessionkey的串接,或者使用你自己的规则进行拼接,然后进行MD5之后作为该用户的自定义登录态， 要保证mySession唯一,
 	mySession := GetMD5Encode(wxLoginResp.OpenId + wxLoginResp.SessionKey)
-	//
-	//// 接下来可以将openid和sessionkey, mySession 存储到数据库中
-	//// 但这里要保证 mySession 唯一， 以便用mySession去索引openid 和 sessionkey
-	//c.String(200, wxLoginResp)
-	//c.JSON(200,gin.H{
-	//	"msg":"baocuo",
-	//	"data":wxLoginResp,
-	//	//"mySession":mySession,
-	//})
-	// 接下来可以将openid 和 sessionkey, mySession 存储到数据库或缓存中, 可以用mySession去索引openid 和sessionkey
+	//接下来可以将openid和sessionkey, mySession 存储到数据库中
 
-	res.SendResponse(c, nil, mySession)
+	get_openid := session.Get("openid")
+	get_sessionKey := session.Get("sessionKey")
+
+	fmt.Printf("get_openid type:%T\n", get_openid)
+	fmt.Printf("get_sessionKey type:%T\n", get_sessionKey)
+    fmt.Println("get_openid",get_openid)
+	if err, rewx_user := service.GetWx_user_openid(wxLoginResp.OpenId); err != nil {
+
+		wx_user := model.Wx_user{
+			Openid:wxLoginResp.OpenId,
+			SessionKey:wxLoginResp.OpenId,
+			MySession:mySession,
+		}
+
+		if err := service.CreateWx_user(wx_user); err != nil {
+			global.GVA_LOG.Error("创建失败!", zap.Any("err", err))
+			response.FailWithMessage("创建失败", c)
+		} else {
+			response.OkWithMessage("创建成功", c)
+		}
+
+
+	} else {
+		response.OkWithData(gin.H{"rewx_user": rewx_user}, c)
+	}
+
+	smap := map[string] string {
+		"openid" :wxLoginResp.OpenId ,
+		"sessionKey" : wxLoginResp.SessionKey,
+		"mySession"	:mySession,
+	}
+
+	res.SendResponse(c, nil, smap)
 }
 
 
@@ -223,6 +245,7 @@ func ValidateUserInfo(rawData, sessionKey, signature string) bool {
 	signature2 := GetSha1(rawData + sessionKey)
 	return signature == signature2
 }
+
 // SHA-1 加密
 func GetSha1(str string) string {
 	data := []byte(str)
@@ -231,5 +254,13 @@ func GetSha1(str string) string {
 	return res
 }
 
+// 取全局access_token
+func Get_access_token()  {
+
+}
+
+func Get_paper_answer()  {
+
+}
 
 

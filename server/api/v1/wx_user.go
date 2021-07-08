@@ -128,3 +128,23 @@ func GetWx_userList(c *gin.Context) {
         }, "获取成功", c)
     }
 }
+
+// 2021 7 8
+// @Tags Wx_user
+// @Summary 用id查询Wx_user
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data body model.Wx_user true "用openid查询Wx_user"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"查询成功"}"
+// @Router /wx_user/findWx_user_openid [get]
+func FindWx_user_openid(c *gin.Context) {
+	var wx_user model.Wx_user
+	_ = c.ShouldBindQuery(&wx_user)
+	if err, rewx_user := service.GetWx_user_openid(wx_user.Openid); err != nil {
+		global.GVA_LOG.Error("查询失败!", zap.Any("err", err))
+		response.FailWithMessage("查询失败", c)
+	} else {
+		response.OkWithData(gin.H{"rewx_user": rewx_user}, c)
+	}
+}

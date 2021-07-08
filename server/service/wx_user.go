@@ -84,3 +84,13 @@ func GetWx_userInfoList(info request.Wx_userSearch) (err error, list interface{}
 	err = db.Limit(limit).Offset(offset).Find(&wx_users).Error
 	return err, wx_users, total
 }
+
+//@function: GetWx_user
+//@description: 根据id获取Wx_user记录
+//@param: id uint
+//@return: err error, wx_user model.Wx_user
+
+func GetWx_user_openid(openid string) (err error, wx_user model.Wx_user) {
+	err = global.GVA_DB.Where("openid = ?", openid).First(&wx_user).Error
+	return
+}
