@@ -47,10 +47,7 @@
         - Windows: https://hub.docker.com/editions/community/docker-ce-desktop-windows
         - Mac: https://hub.docker.com/editions/community/docker-ce-desktop-mac/
 
-- 使用git克隆本项目
-    - ```git
-        git clone https://github.com/flipped-aurora/gin-vue-admin.git
-      ```
+`
     
 - 使用docker-compose up一键启动启动项目
     - ```shell script
@@ -100,10 +97,6 @@
 ### 2.1 web端
 
 ```bash
-# clone the project
-git clone https://github.com/piexlmax/gin-vue-admin.git
-
-# enter the project directory
 cd web
 
 # install dependency
@@ -273,11 +266,3 @@ swag init
 - 表单生成器：表单生成器借助 [@form-generator](https://github.com/JakHuang/form-generator)。
 - 代码生成器：后台基础逻辑以及简单curd的代码生成器。 
 
-## 6. 计划任务
-
-- [ ] 导入，导出Excel
-- [ ] Echart图表支持
-- [ ] 单独前端使用模式以及数据模拟
-
-## 7. 知识库 
-## 7.1 团队博客
