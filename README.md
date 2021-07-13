@@ -26,12 +26,10 @@
 - node版本 > v8.6.0
 - golang版本 >= v1.14
 - IDE推荐：Goland
-- 初始化项目： 不同版本数据库初始化不通 参见https://www.gin-vue-admin.com/docs/server#1-%E5%88%9D%E5%A7%8B%E5%8C%96server%E9%A1%B9%E7%9B%AE
-- 替换掉项目中的七牛云公钥，私钥，仓名和默认url地址，以免发生测试文件数据错乱
 ```
 
 > 使用docker-compose体验
-- 安装 docker-compose [官方文档](https://docs.docker.com/compose/install/)
+- 安装 docker-compose 
     - ```shell script
        # 在Linux安装
        # 1.1 运行此命令以下载Docker Compose的当前稳定版本
@@ -90,8 +88,7 @@
 - dockerfile_server使用了多阶段构建，这是docker 17.05后引入的，因此安装的docker版本需要高于17.05
 - mysql数据库请使用装在服务器磁盘的本地数据库.
 	- 避免使用docker容器内的mysql,可能会出现写入的问题, io比宿主机低  docker的持久化机制问题
-- [init.sql](.docker-compose/docker-entrypoint-initdb.d/init.sql)是给docker-compose进行<font color=red>体验本项目</font>的, 禁止[init.sql](.docker-compose/docker-entrypoint-initdb.d/init.sql)使用进行项目数据的初始化, 数据库初始化[请使用此方法](https://www.gin-vue-admin.com/docs/help#step1%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96)
-	- 使用[init.sql](.docker-compose/docker-entrypoint-initdb.d/init.sql)进行初始化出现的所有问题,请自行承担,与本项目无关
+- [init.sql](.docker-compose/docker-entrypoint-initdb.d/init.sql)是给docker-compose进行<font color=red>体验本项目</font>的, 禁止[init.sql](.docker-compose/docker-entrypoint-initdb.d/init.sql)使用进行项目数据的初始化, 数据库初始化
 - 使用本项目的docker-compose进行部署时,请修改[docker-compose.yaml](./docker-compose.yaml)对应的[nginx配置](.docker-compose/nginx/conf.d/my.conf),mysql配置,networks配置,redis配置,按需自行更改.
 
 ### 2.1 web端
